@@ -1,0 +1,178 @@
+%-------------------------------------------------------------------------------
+%                      Template Naskah Skripsi
+%               	Berdasarkan format JTETI FT UGM
+% 						(c) @gunturdputra 2014
+%-------------------------------------------------------------------------------
+
+%Template pembuatan naskah skripsi.
+\documentclass{jtetiskripsi}
+
+%Untuk prefiks pada daftar gambar dan tabel
+\usepackage[titles]{tocloft}
+\renewcommand\cftfigpresnum{Gambar\  }
+\renewcommand\cfttabpresnum{Tabel\   }
+
+%Untuk hyperlink dan table of content
+\usepackage{hyperref}
+\newlength{\mylenf}
+\settowidth{\mylenf}{\cftfigpresnum}
+\setlength{\cftfignumwidth}{\dimexpr\mylenf+2em}
+\setlength{\cfttabnumwidth}{\dimexpr\mylenf+2em}
+
+%Untuk Bold Face pada Keterangan Gambar
+\usepackage[labelfont=bf]{caption}
+
+%Untuk caption dan subcaption
+\usepackage{caption}
+\usepackage{subcaption}
+
+%pdf
+\usepackage{pdfpages}
+
+%table
+\usepackage{graphics}
+
+\usepackage{wrapfig}
+
+%-----------------------------------------------------------------
+%Disini awal masukan untuk data proposal skripsi
+%-----------------------------------------------------------------
+\titleind{Implementasi Steganografi dalam Penyembunyian Pesan pada Citra Digital dengan Metode \emph{Least Significant Bit}}
+
+\fullname{AMELIA APRILIANI}
+
+\idnum{3145143626}
+
+\approvaldate{02 Februari 2017}
+
+\degree{Sarjana Ilmu Komputer}
+
+\yearsubmit{2018}
+
+\program{Ilmu Komputer}
+
+\dept{Ilmu Komputer}
+
+\firstsupervisor{Drs. Mulyono, M.Kom.}
+\firstnip{1196605171994031003}
+
+\secondsupervisor{Ratna Widyati, S.Si, M.Kom.}
+\secondnip{197509252002122002}
+
+%hypenation
+
+\hyphenation{eng-gan me-ngem-bang-kan smart-phone bah-kan You-Tube you-tube di-lan-jut-kan pe-rang-kat di-la-ku-kan di-mung-kin-kan mem-pro-ses me-mung-kin-kan pe-ra-la-tan plat-form You-Tube-An-dro-id-Pla-yer-A-pi me-nge-ta-hu-i me-mu-dah-kan ba-han se-dang-kan con-trol-ler meng-u-bah me-nam-bah-kan App-Com-pat-Ac-ti-vi-ty pe-ring-kat di-se-su-ai-kan di-bu-tuh-kan pe-rin-tah me-nge-lo-la pe-nge-lo-la-an ber-a-la-mat-kan}
+
+%-----------------------------------------------------------------
+%Disini akhir masukan untuk data proposal skripsi
+%-----------------------------------------------------------------
+
+\begin{document}
+
+\include{cover}
+
+%\include{persetujuan}
+
+%-----------------------------------------------------------------
+%Disini awal masukan Acknowledment
+%-----------------------------------------------------------------
+
+%-----------------------------------------------------------------
+%Disini awal masukan untuk Prakata
+%-----------------------------------------------------------------
+
+%-----------------------------------------------------------------
+%Disini akhir masukan untuk muka skripsi
+%-----------------------------------------------------------------
+\input{pengesahan}
+\tableofcontents 
+\addcontentsline{toc}{chapter}{DAFTAR ISI}
+\listoffigures
+\addcontentsline{toc}{chapter}{DAFTAR GAMBAR}
+\listoftables
+\addcontentsline{toc}{chapter}{DAFTAR TABEL}
+
+%-----------------------------------------------------------------
+%Disini awal masukan Intisari
+%-----------------------------------------------------------------
+
+%-----------------------------------------------------------------
+%Disini akhir masukan Intisari
+%-----------------------------------------------------------------
+%-----------------------------------------------------------------
+\begin{counterpage}
+\end{counterpage}
+%Disini awal masukan untuk Bab
+%-----------------------------------------------------------------
+\include{bab1}
+
+\include{bab2}
+
+\include{bab3}
+
+%\include{bab4}
+
+%\include{bab5}
+%-----------------------------------------------------------------
+%Disini akhir masukan Bab
+%-----------------------------------------------------------------
+
+
+%-----------------------------------------------------------------
+% Disini awal masukan untuk Daftar Pustaka
+% - Daftar pustaka diambil dari file .bib yang ada pada folder ini
+%   juga.
+% - Untuk memudahkan dalam memanajemen dan menggenerate file .bib
+%   gunakan reference manager seperti Mendeley, Zotero, EndNote,
+%   dll.
+%-----------------------------------------------------------------
+%\bibliography{IEEEabrv,daftar-pustaka}
+\begin{thebibliography}{99}
+	\bibitem{anisya}Anisya. 2013. "Aplikasi Sistem Database Rumah Sakit Terpusat pada Rumah Sakit Umum (RSU) Aisyiyah Padang dengan Menerapkan Open Source (PHP - MySQL)". Jurnal Momentum.
+	
+	\bibitem{ardi} Ardi. 2013. "Pengembangan Sistem Pemesanan Makanan Berbasis Android Menggunakan Troli Cerdas". Skripsi Sarjana pada FT Universitas Indonesia.
+	
+	\bibitem{tutorialspoint} Artikel non-personal.  2016. "SDLC - Spiral Model".  Tutorials Point [Online]. Tersedia: \url{https://www.tutorialspoint.com/sdlc/sdlc_spiral_model.htm}. [28 Oktober 2016].
+	
+	\bibitem{bagui}Bagui, Sikha dan Richard Earp. 2011. \textit{Database Design Using Entity-Relationship Diagram}. Florida: CRC Press.	
+	
+	\bibitem{bell} Bell, Donald.  2003. "An Introduction to the Unified Modeling Language".  IBM developerWorks [Online]. Tersedia: \url{http://www.ibm.com/developerworks/rational/library/769.html}. [01 November 2016].
+	
+	\bibitem{burton}Burton, Michael dan Donn Felker. 2012. \textit{Android Application Development For Dummies, 2nd Edition}. New Jersey: John Wiley and Sons, Inc.	
+	
+	\bibitem{denis}Denis, Alan, Barbara Haley Wixom dan David Tegarden. 2010. \textit{Systems Analysis and Design with UML: An Object-Oriented Approach 3rd Edition}. New Jersey: John Wiley and Sons, Inc.
+	
+	\bibitem{edi} Edi, Doro dan Stevalin Betshani. 2009. "Analisis Data dengan Menggunakan ERD dan Model Konseptual Data Warehouse". Jurnal Informatika, Vol.5, No. 1, Juni 2009.
+	
+	\bibitem{francis} Francis, Danny. 2013. "Perancangan Aplikasi Customer Relationship Management: Studi Kasus PT Primacipta Megah Jaya". Thesis Magister pada FASILKOM Universitas Indonesia.
+
+	\bibitem{lee} Lee, Sunguk. 2012. "Unified Modeling Language (UML) for Database Systems and Computer Application". International Journal of Database Theory and Application.
+	
+	\bibitem{murtiwiyati} Murtiwiyati dan Glenn Lauren. 2013. "Rancang Bangun Aplikasi Pembelajaran Budaya Indonesia Untuk Anak Sekolah Dasar Berbasis Android". Jurnal Ilmiah KOMPUTASI, Volume 12 Nomor : 2, Desember 2013.	
+
+	\bibitem{myers} Myers, Brad A dan Jeffrey Stylos. 2016. "Improving API Usability". Communications of the ACM, vol 59, No. 6, June, 2016.		
+	
+	\bibitem{palupi}Palupi, Sri dan Tuti Hera Widi Handayani. 2010. \textit{Resep Masakan (Modul 2)}. Yogyakarta: Universitas Negeri Yogyakarta.	
+	
+	\bibitem{inirani} Pertiwi, Ratih Sukma dan Annelis Brillian.  2015. "Perempuan, Mari Kembali ke Dapur!".  Tabloid Nova [Online]. Tersedia: \url{http://tabloidnova.com/Sedap/Tips-Masak/Perempuan-Mari-Kembali-Ke-Dapur}. [28 April 2016].	
+	
+	\bibitem{pressman}Pressman, Roger S. 2010. \textit{Software Engineering A Practitioner's Approach}. New York: McGraw Hill.	
+		
+	\bibitem{rogers}Rogers, Rick, dkk. 2009. \textit{Android Application Development}. California: O'Reilly Media.	
+	
+	\bibitem{poernomo} Setyanti, Christina Andhika dan Syafrina Syaaf.  2014. "3 Alasan Utama Perempuan Malas Masak".  Kompas.com [Online]. Tersedia: \url{http://female.kompas.com/read/2014/03/06/1254310/3.Alasan.Utama.Perempuan.Malas.Masak}. [28 April 2016].
+	
+	\bibitem{soenardi}Soenardi, Tuti dan Tim. 2013. \textit{Teori Dasar Kuliner}. Jakarta: PT Gramedia Pustaka Utama.	
+		
+	
+\end{thebibliography}
+\addcontentsline{toc}{chapter}{DAFTAR PUSTAKA}
+%-----------------------------------------------------------------
+%Disini akhir masukan Daftar Pustaka
+%-----------------------------------------------------------------
+
+%\include{lampiran}
+
+%\include{cv}
+
+\end{document}

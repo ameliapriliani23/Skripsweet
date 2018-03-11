@@ -1,0 +1,259 @@
+\documentclass{jtetiskripsi}
+
+\usepackage{listings,xcolor}
+\usepackage{inconsolata}
+
+\definecolor{dkgreen}{rgb}{0,.6,0}
+\definecolor{dkblue}{rgb}{0,0,.6}
+\definecolor{dkyellow}{cmyk}{0,0,.8,.3}
+
+\lstset{
+	language        = php,
+	basicstyle      = \small\ttfamily,
+	keywordstyle    = \color{dkblue},
+	stringstyle     = \color{red},
+	identifierstyle = \color{dkgreen},
+	commentstyle    = \color{gray},
+	emph            =[1]{php},
+	emphstyle       =[1]\color{black},
+	emph            =[2]{if,and,or,else},
+	emphstyle       =[2]\color{dkyellow}}
+
+\begin{document}
+	\begin{lstlisting}
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/*
+Kode-kode yang terdapat pada file Model ini bertugas untuk
+mengelola basis data dan mengeksekusi query basis data
+untuk mendapatkan data yang terdapat di dalam
+basis data
+*/
+
+class Masakyuk_model extends CI_Model {
+
+/*
+Inisialisasi hubungan dengan basis data
+*/
+function __construct(){
+parent::__construct();
+$this->load->database();
+}
+
+/*
+Query untuk mendapatkan data dari tabel resep
+*/
+function get_resep(){
+$obj = $this->db->select('*')
+->get('tb_resep');
+return $obj->result_array();
+}
+
+/*
+Query untuk mendapatkan data resep yang direkomendasikan dari tabel resep
+*/
+function get_rekomendasi(){
+$obj = $this->db->select('*')
+->where('rekomendasi',1)
+->get('tb_resep');
+return $obj->result_array();
+}
+
+/*
+Query untuk mendapatkan data resep dengan kategori Makanan Pembuka
+dari tabel resep
+*/
+function get_makanan_pembuka(){
+$obj = $this->db->select('*')
+->join('tb_kategori','tb_kategori.id_cat = tb_resep.id_cat')
+->where('cat',"Makanan Pembuka")
+->get('tb_resep');
+return $obj->result_array();
+}
+
+/*
+Query untuk mendapatkan data resep dengan kategori Makanan Utama
+dari tabel resep
+*/
+function get_makanan_utama(){
+$obj = $this->db->select('*')
+->join('tb_kategori','tb_kategori.id_cat = tb_resep.id_cat')
+->where('cat',"Makanan Utama")
+->get('tb_resep');
+return $obj->result_array();
+}
+
+/*
+Query untuk mendapatkan data resep dengan kategori Makanan Penutup
+dari tabel resep
+*/
+function get_makanan_penutup(){
+$obj = $this->db->select('*')
+->join('tb_kategori','tb_kategori.id_cat = tb_resep.id_cat')
+->where('cat',"Makanan Penutup")
+->get('tb_resep');
+return $obj->result_array();
+}
+
+/*
+Query untuk mendapatkan data bahan dari suatu resep
+yang terdapat pada tabel bahan
+dengan id resep sebagai parameternya
+*/
+function get_list_bahan($id_resep){
+$obj = $this->db->select('*')
+->join('tb_list_bahan','tb_list_bahan.id_bahan = tb_bahan.id_bahan')
+->join('tb_satuan','tb_satuan.id_satuan = tb_bahan.id_satuan')
+->where('id_resep',$id_resep)
+->get('tb_bahan');
+return $obj->result_array();
+}
+
+/*
+Query untuk mendapatkan data cara memasak dari suatu resep
+yang terdapat pada tabel cara memasak
+dengan id resep sebagai parameternya
+*/
+function get_list_cara($id_resep){
+$obj = $this->db->select('*')
+->where('id_resep',$id_resep)
+->get('tb_cara_memasak');
+return $obj->result_array();
+}
+
+/*
+Query untuk mendapatkan list resep
+berdasarkan kata kunci yang diinginkan
+dengan $query sebagai parameternya
+yang merupakan kata kunci pencarian
+*/
+function get_search_bahan($query){
+$obj = $this->db->select('*')
+->join('tb_kategori','tb_kategori.id_cat = tb_resep.id_cat')
+->join('tb_bahan','tb_bahan.id_resep = tb_resep.id_resep')
+->join('tb_list_bahan','tb_list_bahan.id_bahan = tb_bahan.id_bahan')
+->like('nama_bahan',$query)
+->get('tb_resep');
+return $obj->result_array();
+}
+
+/*
+Query untuk mendapatkan data jumlah bahan-bahan
+yang diperlukan untuk memasak satu, dua,atau tiga resep sekaligus
+yang sudah disimpan dalam wishlist
+dengan id resep dari ketiga resep yang tersimpan pada wishlist aplikasi
+sebagai parameterya
+*/
+function get_bahan_accumulation($id_resep,$id_resep_2,$id_resep_3){
+if ($id_resep && $id_resep_2 == null && $id_resep_3 == null){
+$obj = $this->db->query("SELECT nama_bahan, satuan, SUM(banyaknya)
+AS total_banyaknya FROM
+(SELECT nama_bahan,banyaknya,satuan FROM tb_bahan
+JOIN tb_resep
+ON tb_bahan.id_resep = tb_resep.id_resep
+JOIN tb_list_bahan
+ON tb_list_bahan.id_bahan = tb_bahan.id_bahan
+JOIN tb_satuan
+ON tb_satuan.id_satuan = tb_bahan.id_satuan
+WHERE tb_resep.id_resep = $id_resep
+) AS T GROUP BY nama_bahan, satuan");
+return $obj->result_array();
+} else if ($id_resep && $id_resep_2 && $id_resep_3 == null){
+$obj = $this->db->query("SELECT nama_bahan, satuan, SUM(banyaknya)
+AS total_banyaknya FROM
+(SELECT nama_bahan,banyaknya,satuan FROM tb_bahan
+JOIN tb_resep
+ON tb_bahan.id_resep = tb_resep.id_resep
+JOIN tb_list_bahan
+ON tb_list_bahan.id_bahan = tb_bahan.id_bahan
+JOIN tb_satuan
+ON tb_satuan.id_satuan = tb_bahan.id_satuan
+WHERE tb_resep.id_resep = $id_resep
+OR tb_resep.id_resep = $id_resep_2
+) AS T GROUP BY nama_bahan, satuan");
+return $obj->result_array();
+} else if ($id_resep && $id_resep_2 && $id_resep_3){
+$obj = $this->db->query("SELECT nama_bahan, satuan, SUM(banyaknya)
+AS total_banyaknya FROM
+(SELECT nama_bahan,banyaknya,satuan FROM tb_bahan
+JOIN tb_resep
+ON tb_bahan.id_resep = tb_resep.id_resep
+JOIN tb_list_bahan
+ON tb_list_bahan.id_bahan = tb_bahan.id_bahan
+JOIN tb_satuan
+ON tb_satuan.id_satuan = tb_bahan.id_satuan
+WHERE tb_resep.id_resep = $id_resep
+OR tb_resep.id_resep = $id_resep_2
+OR tb_resep.id_resep = $id_resep_3
+) AS T GROUP BY nama_bahan, satuan");
+return $obj->result_array();
+}
+}
+
+/*
+Query untuk mendapatkan data total harga
+dari bahan-bahan yang diperlukan untuk memasak satu, dua, atau
+tiga resep sekaligus yang sudah disimpan dalam wishlist
+dengan id resep dari ketiga resep yang tersimpan pada wishlist aplikasi
+sebagai parameterya
+*/
+function get_harga_accumulation($id_resep,$id_resep_2,$id_resep_3){
+if ($id_resep && $id_resep_2 == null && $id_resep_3 == null){
+$obj = $this->db->query("SELECT nama_bahan, satuan, harga_per_satuan,
+per, SUM(banyaknya) AS total_banyaknya FROM
+(SELECT nama_bahan,banyaknya,satuan,harga_per_satuan,per
+FROM tb_bahan
+JOIN tb_resep
+ON tb_bahan.id_resep = tb_resep.id_resep
+JOIN tb_list_bahan
+ON tb_list_bahan.id_bahan = tb_bahan.id_bahan
+JOIN tb_satuan
+ON tb_satuan.id_satuan = tb_bahan.id_satuan
+JOIN tb_harga
+ON tb_bahan.id_bahan = tb_harga.id_bahan
+AND tb_bahan.id_satuan = tb_harga.id_satuan
+WHERE tb_resep.id_resep = $id_resep
+) AS T GROUP BY nama_bahan, satuan");
+return $obj->result_array();
+} else if ($id_resep && $id_resep_2 && $id_resep_3 == null){
+$obj = $this->db->query("SELECT nama_bahan, satuan, harga_per_satuan,
+per, SUM(banyaknya) AS total_banyaknya FROM
+(SELECT nama_bahan,banyaknya,satuan,harga_per_satuan,per
+FROM tb_bahan
+JOIN tb_resep
+ON tb_bahan.id_resep = tb_resep.id_resep
+JOIN tb_list_bahan
+ON tb_list_bahan.id_bahan = tb_bahan.id_bahan
+JOIN tb_satuan
+ON tb_satuan.id_satuan = tb_bahan.id_satuan
+JOIN tb_harga
+ON tb_bahan.id_bahan = tb_harga.id_bahan
+AND tb_bahan.id_satuan = tb_harga.id_satuan
+WHERE tb_resep.id_resep = $id_resep
+OR tb_resep.id_resep = $id_resep_2
+) AS T GROUP BY nama_bahan, satuan");
+return $obj->result_array();
+} else if ($id_resep && $id_resep_2 && $id_resep_3){
+$obj = $this->db->query("SELECT nama_bahan, satuan, harga_per_satuan,
+per, SUM(banyaknya) AS total_banyaknya FROM
+(SELECT nama_bahan,banyaknya,satuan,harga_per_satuan,per
+FROM tb_bahan
+JOIN tb_resep
+ON tb_bahan.id_resep = tb_resep.id_resep
+JOIN tb_list_bahan
+ON tb_list_bahan.id_bahan = tb_bahan.id_bahan
+JOIN tb_satuan
+ON tb_satuan.id_satuan = tb_bahan.id_satuan
+JOIN tb_harga
+ON tb_bahan.id_bahan = tb_harga.id_bahan
+AND tb_bahan.id_satuan = tb_harga.id_satuan
+WHERE tb_resep.id_resep = $id_resep
+OR tb_resep.id_resep = $id_resep_2
+OR tb_resep.id_resep = $id_resep_3
+) AS T GROUP BY nama_bahan, satuan");
+return $obj->result_array();
+}
+}
+
+	\end{lstlisting}	
+\end{document}
