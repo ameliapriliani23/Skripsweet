@@ -6,12 +6,112 @@
 
 \chapter{KAJIAN TEORI}                
 
-Kumpulan resep masakan pada umumnya memuat berbagai macam makanan yang siap untuk dimasak. Makanan merupakan elemen penting yang membentuk suatu resep karena makanan adalah produk hasil akhir yang ingin dicapai melalui panduan yang terdapat dalam resep masakan. Resep masakan kemudian dijadikan konten utama dalam pengembangan yang dilakukan oleh penulis dengan menggunakan Android sebagai wadah bagi aplikasi atau perangkat lunak tersebut. Pengembangan resep masakan ini dilakukan berdasarkan tahapan \emph{System Development Life Cycle} (SDLC) yang berlaku secara umum dalam dunia \emph{software developing}.
-
-
-\section{Pengembangan Aplikasi Perangkat Lunak}
-	Pengembangan perangkat lunak pada umumnya sama dengan membangun sebuah gedung. Proses pertama dimulai dengan sebuah ide atau gagasan, lalu dilanjutkan dengan merubah ide atau gagasan tersebut menjadi sebuah desain sehingga dapat memberi gambaran lebih jelas tentang ide tersebut. Proses selanjutnya bersifat opsional, yakni melakuan revisi atau perubahan terhadap desain apabila dirasa tidak sesuai dengan yang diinginkan. Setelah itu, dilanjutkan dengan melakukan pembuatan cetak biru terhadap desain tersebut sehingga memperoleh gambaran yang lebih mendetail lagi dari masing-masing bagian gedung tersebut. Proses yang terakhir adalah membangun gedung tersebut berdasarkan cetak biru yang ada \cite{francis}. 
+\section{Steganografi}
+	\subsection{Pengertian Steganografi}
+	Menurut \textbf{Ir. Rinaldi Munir, M.T.} dalam Diktat Kuliah Kriptografi dengan judul Steganografi dan \emph{Watermaking}:
 	
+	"Steganografi (\emph{steganography}) adalah ilmu dan seni menyembunyikan pesan rahasia (\emph{hiding message}) sedemikian sehingga keberadaan (eksistensi) pesan tidak terdeteksi oleh indera manusia." \cite{munir}
+	
+	Menurut \textbf{Gary C. Kessler} dalam jurnalnya \emph{Steganography Hiding Data Within Data}:
+	
+	"Steganografi adalah ilmu menyembunyikan informasi. Tujuan steganografi adalah untuk menyembunyikan data dari pihak ketiga." \cite{kessler}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{gambar/diagram_steganografi}
+		\caption{Diagram penyisipan dan ekstraksi pada pesan}
+		\label{diagram_steganografi}
+	\end{figure} 
+	
+	Istilah di dalam steganografi:
+	\begin{enumerate}
+		\item \emph{Covertext} merupakan media atau tempat pesan yang digunakan untuk menyembunyikan \emph{hiddentext}. \emph{Covertext} bisa berupa teks, gambar, audio, video, dll.
+		\item \emph{Hiddentext}	atau biasa disebut \emph{embedded message} merupakan pesan atau informasi yang ingin disembunyikan. Contohnya bisa berupa teks, gambar, audio, video, dll.
+		\item \emph{Stegotext} merupakan pesan yang sudah berisi \emph{embedded message}.
+		\item \emph{Encoding} yaitu penyisipan pesan ke dalam media \emph{covertext}.
+		\item \emph{Decoding} yaitu ekstraksi pesan dari \emph{stegotext}.
+	\end{enumerate}
+	
+	Menurut \textbf{Munir}, ada kriteria yang harus diperhatikan dalam penyembunyian pesan, yaitu meliputi \emph{Imperceptible}, \emph{Fidelity}, \emph{Recovery} dan \emph{Capacity}.
+	\begin{enumerate}
+		\item \emph{Imperceptible}\\ 
+		Keberadaan pesan rahasia tidak dapat dipersepsi secara visual atau secara audio. Jika \emph{covertext} berupa \emph{file} citra, maka \emph{stegotext} yang dihasilkan harus sukar dibedakan oleh kasat mata dengan \emph{covertext}-nya. Dan jika \emph{covertext} berupa \emph{file} audio, maka telinga tidak dapat mendeteksi perubahan yang ada pada audio \emph{stegotext}-nya. 
+		\item \emph{Fidelity}\\
+		Kualitas \emph{file} citra penampung tidak jauh berubah. Setelah penambahan pesan rahasia, citra hasil steganografi masih terlihat dengan baik. Pengamat tidak mengetahui kalau di dalam citra tersebut terdapat pesan rahasia.
+		\item \emph{Recovery}\\
+		Pesan yang disembunyikan harus dapat diekstrak kembali. Karena tujuan steganografi adalah menyembunyikan pesan atau informasi, maka jika informasi itu dibutuhkan harus dapat diambil kembali untuk dapat digunakan.
+		\item \emph{Capacity}\\
+		Ukuran pesan yang akan disembunyikan sedapat mungkin besar. Agar dapat memaksimalkan manfaat dari steganografi itu sendiri. \cite{munir}
+	\end{enumerate}
+	
+	\subsection{Sejarah Steganografi}
+	Seperti kriptografi, penggunaan steganografi sebetulnya telah digunakan berabad-abad yang lalu bahkan sebelum istilah steganografi itu sendiri muncul. Periode sejarah steganografi dapat dibagi menjadi:
+	\begin{enumerate}
+		\item Steganografi Kuno (\emph{Ancient Steganography})
+			\begin{enumerate}
+				\item Steganografi dengan media kepala budak
+				
+				Ditulis oleh \textbf{Herodatus} (485–525 BC), sejarawan Yunani pada tahun 440 BC di dalam buku: \emph{Histories of Herodatus}). Kisah perang antara kerajaan Persia dan rakyat Yunani. \textbf{Herodatus} menceritakan cara \textbf{Histaiaeus} mengirim pesan kepada \textbf{Aristagoras of Miletus} untuk melawan Persia. 
+				
+				Caranya adalah dengan dipilih beberapa budak. Kemudian kepala budak tersebut digunduli dan ditulis pesan dengan cara ditato. Setelah pesan dituliskan, budak harus menunggu hingga rambutnya tumbuh kembali. Setelah rambut pada kepala budak tersebut tumbuh, budak dikirim ke tempat penerima. Di sana kepala budak digunduli agar pesan dapat dibaca.
+					\begin{figure}[H]
+						\centering
+						\includegraphics[width=1\textwidth]{gambar/steganografi_kepalabudak}
+						\caption{Steganografi dengan media kepala budak}
+						\label{steganografi_kepalabudak}
+					\end{figure}
+				
+				\item Penggunaan tablet \emph{wax}
+				
+				Orang-orang Yunani kuno menulis pesan rahasia di atas kayu yang kemudian ditutup dengan lilin (\emph{wax}). Di dalam bukunya, \textbf{Heradatus} menceritakan \textbf{Demaratus} mengirim peringatan tentang serangan yang akan datang ke Yunani dengan menulis langsung pada tablet kayu yang kemudian dilapisi lilin dari lebah.
+					\begin{figure}[H]
+						\centering
+						\includegraphics[width=1\textwidth]{gambar/tablet_wax}
+						\caption{Tablet \emph{wax}}
+						\label{tablet_wax}
+					\end{figure}
+					
+				\item Penggunaan tinta tak-tampak (\emph{invisible ink})
+				
+				\textbf{Pliny the Elder} menjelaskan penggunaan tinta dari getah tanaman \emph{thithymallus}. Jika dituliskan pada kertas maka tulisan dengan tinta tersebut tidak kelihatan, tetapi bila kertas dipanaskan berubah menjadi gelap/coklat.
+				
+				\item Penggunaan kain sutra dan lilin
+				
+				Orang Cina kuno menulis catatan pada potongan-potongan kecil sutra yang kemudian digumpalkan menjadi bola kecil dan dilapisi lilin. Selanjutnya bola kecil tersebut ditelan oleh si pembawa pesan. Pesan dibaca setelah bola kecil dikeluarkan dari perut si pembawa pesan.			
+			\end{enumerate}
+		\item Steganografi Zaman Renaisans (\emph{Renaissance Steganography})
+		
+		Tahun 1499, \textbf{Johannes Trithemius} menulis buku \emph{Steganographia}, yang menceritakan tentang metode steganografi berbasis karakter. Selanjutnya tahun 1518 dia menulis buku tentang steganografi dan kriptografi berjudul \emph{Polygraphiae}.
+		
+		\textbf{Giovanni Battista Porta} menggambarkan cara menyembunyikan pesan di dalam telur rebus. Caranya, pesan ditulis pada kulit telur yang dibuat dari tinta khusus yang dibuat dengan satu ons tawas dan setengah liter cuka. Prinsipnya penyembunyiannya adalah tinta tersebut akan menembus kulit telur yang berpori, tanpa meninggalkan jejak yang terlihat. Tulisan dari tinta akan membekas pada permukaan isi telur yang telah mengeras (karena sudah direbus sebelumnya). Pesan dibaca dengan membuang kulit telur.
+		
+		\item Steganografi Zaman Perang Dunia (\emph{World War Steganography})
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{gambar/steganografi_perangdunia}
+			\caption{Steganografi zaman perang dunia}
+			\label{steganografi_perangdunia}
+		\end{figure}
+	
+		Selama terjadinya Perang Dunia ke-2, tinta yang tidak tampak (\emph{invisible ink}) telah digunakan untuk menulis informasi pada lembaran kertas sehingga saat kertas tersebut jatuh di tangan pihak lain hanya akan tampak seperti lembaran kertas kosong biasa. Cairan seperti air kencing (\emph{urine}), susu, vinegar, dan jus buah digunakan sebagai media penulisan sebab bila salah satu elemen tersebut dipanaskan, tulisan akan menggelap dan tampak melalui mata manusia. \cite{munir}
+		
+		\item Steganografi \emph{Digital}
+		
+		Sejalan dengan perkembangan maka konsep awal steganografi diimplementasikan pula dalam dunia komputer, yang kemudian dikenal dengan istilah steganografi \emph{digital}. Dalam hal ini, steganografi \emph{digital} memiliki dua properti dasar yaitu media penampung (\emph{cover data} atau \emph{data carrier}) dan data \emph{digital} yang akan disisipkan (\emph{secret data}), dimana media penampung dan data \emph{digital} yang akan disisipkan dapat berupa \emph{file} multimedia (teks/dokumen, citra, audio maupun video). Terdapat dua tahapan umum dalam steganografi \emph{digital}, yaitu proses \emph{embedding} atau \emph{encoding} (penyisipan) dan proses \emph{extracting} atau \emph{decoding} (pemekaran atau pengungkapan kembali (\emph{reveal})). Hasil yang didapat setelah proses \emph{embedding} atau \emph{encoding} disebut \emph{stego object} (apabila media penampung hanya berupa data citra maka disebut \emph{stego image}). \cite{prayudi}
+	\end{enumerate}
+
+	\subsection{Metode Steganografi}
+	Berdasarkan ranah operasinya, metode-metode steganografi dapat dibagi menjadi dua kelompok:
+	\begin{enumerate}
+		\item \emph{Spatial (time) domain methods}\\
+		Memodifikasi langsung nilai byte dari \emph{cover-object} (nilai \emph{byte} dapat merepresentasikan intensitas/warna \emph{pixel} atau amplitudo). Contoh: Metode modifikasi LSB
+		
+		\item \emph{Tranform domain methods}\\
+		Memodifikasi hasil transformasi sinyal dalam ranah transform (hasil trnasformasi dari ranah spasial ke ranah lain (misalnya ranah frekuensi). Contoh: Metode \emph{Spread Spectrum} \cite{munir}
+		
+	\end{enumerate}
+
 	Dalam proses pengembangan aplikasi perangkat lunak, terdapat istilah SDLC atau \emph{System Development Life Cycle}. SDLC adalah sebuah metode atau proses untuk memberikan pengertian bagaimana sebuah sistem informasi dapat mendukung kebutuhan bisnis dengan melakukan desain sebuah sistem, membangun sistem tersebut, dan mengimplementasikannya ke pengguna \cite{denis}.
 	
 	SDLC memiliki 4 tahapan utama yakni perencanaan, analisa, desain, dan implementasi. Dalam sebuah proyek pengembangan aplikasi perangkat lunak pastilah memiliki keempat tahapan tersebut, namun cara untuk melaksanakan tahapan-tahapan tersebut dapat berbeda-beda antara satu proyek dengan proyek lainnya. Setiap tahapan tersebut memiliki langkah-langkah tersendiri dalam menjalankan tahapan-tahapan tersebut sesuai dengan tujuan akhir dari masing-masing tahapan tersebut.

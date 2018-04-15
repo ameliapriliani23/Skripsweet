@@ -7,21 +7,24 @@
 \chapter{LATAR BELAKANG}
 
 \section{Latar Belakang Masalah}
-Saat ini \emph{internet} sudah berkembang menjadi salah satu media yang sangat populer di berbagai dunia (Bunyamin;Adrian, 2009). Perkembangan \emph{internet} memberikan pengaruh besar terhadap kemudahan dalam berkomunikasi dan menyampaikan informasi. Komunikasi merupakan salah satu hal yang penting bagi manusia. Manusia yang merupakan makhluk sosial cenderung melakukan komunikasi setiap hari, baik secara langsung maupun melalui media elektronik. Manusia melakukan komunikasi untuk bertukar informasi.
+Saat ini \emph{internet} sudah berkembang menjadi salah satu media yang sangat populer di berbagai dunia \cite{bunyamin}. Perkembangan \emph{internet} memberikan pengaruh besar terhadap kemudahan dalam berkomunikasi dan menyampaikan informasi. Komunikasi merupakan salah satu hal yang penting bagi manusia. Manusia yang merupakan makhluk sosial cenderung melakukan komunikasi setiap hari, baik secara langsung maupun melalui media elektronik. Manusia melakukan komunikasi untuk bertukar informasi.
 
 Kemudahan dalam berkomunikasi memberikan dampak positif dan negatif. Dampak positifnya yaitu cepatnya informasi dapat tersebar, baik antar daerah maupun antar negara. Dan dampak negatifnya adalah semakin berkembangnya kejahatan dalam penggunaan informasi. Dengan berbagai teknik, banyak orang yang mencoba untuk mengakses informasi yang bukan haknya. Maka dari itu harus berkembang juga pengamanan sistem informasi.
 
-Teknik pengamanan informasi yang ada saat ini seperti kriptografi dan steganografi. Kriptografi adalah suatu ilmu dan seni untuk menjaga kerahasiaan pesan dengan cara menyandikan ke dalam bentuk yang tidak dapat dimengerti lagi maknanya. Kriptografi telah ada dan digunakan sejak berabad-abad yang lalu dikenal dengan istilah kriptografi klasik, yang bekerja pada mode karakter alfabet  (Rakhmat;Fairuzabadi, 2010).
+Teknik pengamanan informasi yang ada saat ini seperti kriptografi dan steganografi. Kriptografi adalah ilmu dan seni untuk menjaga kerahasiaan pesan dengan cara menyandikan pesan  ke dalam bentuk yang tidak dapat dimengerti lagi maknanya. Kriptografi telah ada dan digunakan sejak berabad-abad yang lalu dikenal dengan istilah kriptografi klasik, yang bekerja pada mode karakter alfabet  \cite{rakhmat}.
 
-Steganografi adalah seni dan sains komunikasi pesan yang tak terlihat. Hal ini dilakukan dengan menyembunyikan informasi dalam informasi lain, misalnya menyembunyikan keberadaan informasi yang dikomunikasikan. Kata steganografi berasal dari kata Yunani "stegos" yang berarti "cover" dan "grafia" yang berarti "menulis" yang mendefinisikannya sebagai "tulisan tertutup"  (Mrs., Kadam, Koshti;Dunghav, 2012).
+Steganografi adalah seni dan sains komunikasi pesan yang tidak terlihat. Hal ini dilakukan dengan menyembunyikan informasi dalam informasi lain, misalnya menyembunyikan keberadaan informasi yang dikomunikasikan. Kata steganografi berasal dari kata Yunani "stegos" yang berarti "cover" dan "grafia" yang berarti "menulis" yang mendefinisikannya sebagai "tulisan tertutup" \cite{kavitha}.
 
-Salah satu metode steganografi adalah \emph{Least Significant Bit} (LSB). Algoritma LSB, menggantikan bit paling signifikan pada \emph{file cover} sesuai dengan bit pesan. Teknik ini adalah teknik yang paling populer digunakan dalam steganografi untuk menyembunyikan pesan. Teknik ini biasanya efektif, karena substitusi LSB tidak menyebabkan degradasi kualitas yang signifikan  (Joshi;Yadav, 2015).
+Salah satu metode steganografi adalah \emph{Least Significant Bit} (LSB). Algoritma LSB, menggantikan bit paling signifikan pada \emph{file cover} sesuai dengan bit pesan. Teknik ini adalah teknik yang paling populer digunakan dalam steganografi untuk menyembunyikan pesan. Teknik ini biasanya efektif, karena substitusi LSB tidak menyebabkan degradasi kualitas yang signifikan \cite{joshi}.
+
+Pengimplementasian metode Least Significant Bit pada steganografi sudah pernah dilakukan penelitian oleh Fahri Perdana Prasetyo dengan format file *.TIFF menggunakan bahasa pemrograman MATLAB \cite{prasetyo}. Selain itu juga pernah dilakukan penelitian oleh Adiria dengan format file *.BMP menggunakan bahasa pemrograman Delphi \cite{adiria}. Sedangkan yang akan penulis buat nantinya adalah dengan mengkombinasikan kedua penelitian tersebut.
+
+Dengan penjabaran di atas, penulis mengkombinasikan jurnal-jurnal tersebut untuk melakukan penelitian tentang "\textbf{Implementasi Steganografi dalam Penyembunyian Pesan pada Citral Digital dengan Metode \emph{Least Significant Bit}}". Dengan adanya penelitian ini diharapkan dapat memberikan informasi mengenai steganografi.
 
 \section{Batasan Masalah}
 Batasan masalah dalam tugas akhir ini mencakup:
 \begin{itemize}
 	\item \emph{Software} yang digunakan adalah Matlab R2013b.
-	\item  Peneliti akan langsung menggunakan \emph{smartphone} berbasis Android dalam proses \emph{debugging} dan \emph{testing}. Versi android yang digunakan adalah Lollipop (Android 5.0) dengan API 21.
 	\item Format \emph{file}  citra \emph{digital} yang dapat digunakan untuk menyimpan pesan adalah berformat *.bmp.
 	\item Format \emph{file}  citra \emph{digital} yang dihasilkan dari program steganografi ini adalah berformat *.bmp.
 	\item Pesan yang dapat disimpan hanya berformat *.txt.
@@ -31,7 +34,8 @@ Batasan masalah dalam tugas akhir ini mencakup:
 \section{Rumusan Masalah}
 Rumusan masalah berdasarkan latar belakang di atas adalah:
 \begin{enumerate}
-	\item Bagaimana cara menyembunyikan teks dalam proses steganografi dengan menggunakan metode \emph{Least Significant Bit}?
+	\item Bagaimana cara menyembunyikan pesan teks ke dalam citra pada steganografi dengan menggunakan metode \emph{Least Significant Bit}?
+	\item Bagaimana cara mendapatkan pesan teks dari dalam citra pada proses steganografi dengan menggunakan metode \emph{Least Significant Bit}?
 	\item Bagaimana perubahan dalam \emph{file} citra hasil keluaran sebelum dan sesudah disisipkan pesan teks?
 \end{enumerate}
 
@@ -39,7 +43,8 @@ Rumusan masalah berdasarkan latar belakang di atas adalah:
 \section{Tujuan Penelitian}
 Tujuan dari penelitian ini adalah: 
 \begin{enumerate}
-	\item Memberikan informasi bagaimana teknik steganografi dapat diterapkan untuk menyembunyikan teks dalam \emph{file} citra \emph{digital} dengan menggunakan metode \emph{Least Significant Bit}. 
+	\item Memberikan informasi bagaimana teknik steganografi dapat diterapkan untuk menyembunyikan pesan teks dalam \emph{file} citra \emph{digital} dengan menggunakan metode \emph{Least Significant Bit}. 
+	\item Memberikan informasi bagaimana teknik steganografi dapat diterapkan untuk mendapatkan pesan teks dalam \emph{file} citra \emph{digital} dengan menggunakan metode \emph{Least Significant Bit}. 
 	\item Mengetahui perubahan yang terjadi dari hasil keluaran \emph{file} citra \emph{digital}.
 \end{enumerate}
 
@@ -47,11 +52,12 @@ Tujuan dari penelitian ini adalah:
 Penelitian ini diharapkan memberikan manfaat sebagai berikut:
 	\begin{enumerate}
 		\item Bagi Penulis, diharapkan dapat menambah pengetahuan dan pemahaman tentang steganografi.
-		\item Bagi Program Studi Ilmu Komputer, Penulisan penelitian ini memberikan gambaran bagi seluruh mahasiswa khususnya bagi mahasiswa program studi Ilmu Komputer Universitas Negeri Jakarta tentang bagaimana teknik stegaografi dapat menyembunyikan pesan dalam \emph{file} citra \emph{digital}.  	
+		\item Bagi Program Studi Ilmu Komputer, Penulisan penelitian ini memberikan gambaran bagi seluruh mahasiswa khususnya bagi mahasiswa program studi Ilmu Komputer Universitas Negeri Jakarta tentang bagaimana teknik stegaografi dapat menyembunyikan pesan dalam \emph{file} citra \emph{digital}.
+		\item Bagi Masyarakat, diharapkan dapat menjadi salah satu solusi dalam mengamankan \emph{file} mereka dari orang-orang yang tidak mempunyai hak untuk melihatnya.   	
 	\end{enumerate}
 
 \section{Jenis Penelitian}
-Jenis Penelitian yang dijalani oleh Peneliti berjenis ... Jenis penelitian ini mengarahkan penulis kepada ...		
+Jenis Penelitian yang dijalani oleh Peneliti berjenis Kajian Teori. Jenis penelitian ini mengarahkan penulis kepada penulis kepada penerapan metode \emph{Least Significant Bit} dalam pengembangan steganografi dalam penyembunyian pesan.		
 % Baris ini digunakan untuk membantu dalam melakukan sitasi
 % Karena diapit dengan comment, maka baris ini akan diabaikan
 % oleh compiler LaTeX.
