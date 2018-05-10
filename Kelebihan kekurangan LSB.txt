@@ -1,0 +1,3 @@
+Kelebihan dari LSB adalah mudah diimplementasikan, proses \emph{encoding} cepat dan hanya mengubah nilai \textit{byte} pada \emph{pixel} satu lebih tinggi atau satu lebih rendah dari nilai sebelumnya, sehingga tidak berpengaruh secara visual. Tetapi menempatkan pesan pada \emph{pixel} yang berurutan dapat dengan mudah dideteksi oleh penyerang. Penyerang akan menduga bahwa ada pesan rahasia di dalam \emph{file} tersebut, itu merupakan kekurangan dari metode LSB.
+	
+Kelebihan dari \emph{Spread Spectrum} adalah...

@@ -1,0 +1,45 @@
+LSB
+Adapun keuntungan dari pemanfaatan metode LSB adalah sebagai berikut:
+1. Keuntungan yang paling besar dari algoritma LSB ini adalah mudah
+diimplementasikan dan proses encoding cepat.
+2. Dan juga algoritma tersebut memiliki software steganography yang
+mendukung dengan bekerja diantara unsur pokok warna LSB melalui
+manipulasi pallete (lukisan).
+3. Mengubah bit LSB hanya mengubah nilai byte satu lebih tinggi atau satu
+lebih rendah dari nilai sebelumnya, sehingga tidak berpengaruh terhadap
+persepsi visual/auditori.
+
+Selain dari beberapa kelebihan diatas, metode LSB juga memiliki
+kekurangan sebagai berikut:
+1. Tidak tahan terhadap pengubahan (modifikasi) terhadap cover object.
+Menggunakan LSB Insertion dapat secara drastis merubah unsur pokok
+warna dari pixel. sehingga tanda tersebut menunjukkan keberadaan dari
+steganografi.
+2. Mudah dihapus karena lokasi penyisipan diketahui (bit LSB)
+
+SS
+Dalam [8] disimpulkan mengenai kelebihan
+dan kekurangan spread spectrum itu sendiri.
+Kelebihannya adalah
+1. penyembunyian sinyal (kepadatan
+energi yang rendah, mirip derau),
+2. komunikasi yang aman,
+3. penolakan multipath, hanya menerima
+direct path,
+4. proteksi terhadap inferensi yang
+disengaja (jamming),
+5. penolakan terhadap inferensi yang
+tidak disengaja (narrowband),
+6. kecil kemungkinan untuk terdeteksi,
+dan
+7. adanya ketersediaan license-free ISM
+(Industrial, Scientific, and Medical)
+frequency-bands.
+
+Sedangkan kekurangannya adalah
+1. tidak adanya perbaikan performansi
+melalui penggunaan derau Gaussian,
+2. peningkatan bandwidth (penggunaan
+frekuensi, wideband receiver), dan
+3. peningkatan kompleksitas dalam
+proses perhitungan.

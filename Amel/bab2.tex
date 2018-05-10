@@ -8,13 +8,11 @@
 
 \section{Steganografi}
 	\subsection{Pengertian Steganografi}
-	Menurut \textbf{Ir. Rinaldi Munir, M.T.} dalam Diktat Kuliah Kriptografi dengan judul Steganografi dan \emph{Watermaking}:
-	
-	"Steganografi (\emph{steganography}) adalah ilmu dan seni menyembunyikan pesan rahasia (\emph{hiding message}) sedemikian sehingga keberadaan (eksistensi) pesan tidak terdeteksi oleh indera manusia." \cite{munir}
-	
 	Menurut \textbf{Gary C. Kessler} dalam jurnalnya \emph{Steganography Hiding Data Within Data}:
 	
 	"Steganografi adalah ilmu menyembunyikan informasi. Tujuan steganografi adalah untuk menyembunyikan data dari pihak ketiga." \cite{kessler}.
+	
+	Secara umum, steganografi adalah ...
 	
 	\begin{figure}[H]
 		\centering
@@ -122,6 +120,9 @@
 		\emph{Spread Spectrum} steganografi terpencar-pencar sebagai pesan yang diacak (\emph{encrypted}) melalui gambar (tidak seperti dalam LSB). Untuk membaca suatu pesan, penerima memerlukan algoritma yaitu \emph{crypto-key} dan \emph{stego-key}. Metode ini juga masih mudah diserang yaitu penghancuran atau pengrusakan dari kompresi dan proses \emph{image} (gambar) \cite{wikipedia1}.
 	\end{enumerate}
 
+	Metode LSB dan \emph{Spread Spectrum} adalah dua metode yang sering digunakan dalam melakukan steganografi. Selain karena metodenya yang sederhana, proses \emph{embedding} dan ekstraksi dari kedua metode tersebut juga \emph{relative} cepat\cite{pavani}. Tetapi LSB memiliki proses \emph{embedding} dan ekstraksi yang lebih cepat dari metode \emph{Spread Spectrum} karena proses metode \emph{Spread Spectrum} harus melalui peng-XOR-an antara pesan dan kata kunci, sedangkan LSB langsung menyisipkan pesan ke dalam gambar \cite{pakereng}.
+	
+
 \section{Perbedaan Steganografi dan Kriptografi}
 Steganografi dan kriptografi mempunyai prinsip kerja yang berbeda, meskipun keduanya mempunyai hubungan yang dekat dalam dunia keamanan data. Pada kriptografi menghasilkan sebuah \emph{chipertext} dimana dengan itu seolah-olah dengan sengaja menunjukkan kepada orang lain bahwa ada sesuatu di dalamnya, namun tidak dapat diketahui maknanya. Namun dengan bentuk \emph{chiper}-nya, justru akan membuat data tersebut terancam oleh usaha-usaha yang dilakukan oleh orang lain untuk dapat membongkarnya dengan tujuan dan atau alasan apapun.
 \begin{figure}[H]
@@ -136,13 +137,55 @@ Steganografi dan kriptografi merupakan seni dan teknik yang dapat digunakan untu
 \section{LSB (\emph{Least Significant Bit})}
 Penyembunyian data dilakukan dengan mengganti bit-bit data di dalam segmen citra dengan bit-bit rahasia. Pada susunan bit di dalam sebuah \emph{byte} (1 \emph{byte}= 8 bit), ada bit yang paling berarti (\emph{most significant bit} atau MSB) dan bit yang paling kurang berarti (\emph{least significant bit} atau LSB). LSB merupakan salah satu metode yang paling sederhanaa dalam steganografi. Bit yang cocok untuk diganti adalah bit LSB, sebab perubahan tersebut hanya mengubah nilai \emph{byte} satu lebih tinggi atau satu lebih rendah dari nilai sebelumnya \cite{munir}.
 
-//tambahin sesuatu lagi
+Pada \emph{file bitmap} 24 bit, setiap bit masing-masing memiliki komponen \emph{Red, Green,} dan \emph{Blue} (RGB), sehingga dapat menyimpan 3 bit pada setiap \emph{pixel}-nya. Pada gambar 800x600 \emph{pixel} dapat digunakan untuk menyembunyikan 1.440.000 bit (180.000 \emph{Byte}) data rahasia. Sebagai contoh diambil 3 \emph{pixel} dari \emph{file bitmap} 24 bit yang akan disisipkan pesan atau data rahasia karakter "A":
+\begin{figure}[H]
+	\centering
+	(00001000 00101011 11011100)\\
+	(11100000 11000100 00010101)\\
+	(00010011 10101010 01100011)\\
+\end{figure}
+
+Karakter "A" mempunyai nilai biner 01000001, maka bit hasil penyisipannya adalah:
+\begin{figure}[H]
+	\centering
+	(00001000 00101011 11011100)\\
+	(11100000 11000100 0001010\textbf{0})\\
+	(0001001\textbf{0} 1010101\textbf{1} 01100011\\
+\end{figure}
+
+Bit-bit yang nilainya berganti ada 3 dalam 8 \emph{Byte} yang digunakan. Contoh lainnya adalah diambil 8 pixel dari sebuah gambar, maka data rahasia yang dapat dimasukkan adalah 1 kata, contohnya adalah "ADA"
+\begin{figure}[H]
+	\centering
+	(10011011 01100100 01010000)\\
+	(10010011 01010101 01001000)\\
+	(10011010 01010111 01001110)\\
+	(10011010 01010101 01010000)\\
+	(10001000 01000001 00111111)\\
+	(01101001 00100010 00110100)\\
+	(01101101 00100111 00110010)\\
+	(01111001 00110011 00110101)\\
+\end{figure}
+
+Kata "ADA" mempunyai biner A = 01000001, D = 01000100, maka bit hasil penyisipannya adalah:
+\begin{figure}[H]
+	\centering
+	(1001101\textbf{0} 0110010\textbf{1} 01010000)\\
+	(1001001\textbf{0} 0101010\textbf{0} 01001000)\\
+	(10011010 01010111 01001110)\\
+	(1001101\textbf{1} 0101010\textbf{0} 01010000)\\
+	(10001000 01000001 0011111\textbf{0})\\
+	(0110100\textbf{0} 00100010 0011010\textbf{1})\\
+	(0110110\textbf{0} 0010011\textbf{0} 00110010)\\
+	(0111100\textbf{0} 0011001\textbf{0} 00110101)\\
+\end{figure}
+
+Bit-bit yang nilainya berganti ada 13 dalam 24 \emph{Byte} yang digunakan. Secara rata-rata, LSB hanya menggunakan setengah dari bit dalam gambar yang perlu dimodifikasi untuk menyembunyikan pesan rahasia. Perubahan ini tidak dapat dirasakan oleh mata manusia, dan pesan berhasil disembunyikan \cite{elgabar2}.
 
 \section{ASCII}
 ASCII adalah singkatan dari \emph{American Standard Code for Information Interchange}. Komputer hanya dapat memahami angka, jadi kode ASCII adalah representasi numerik dari karakter seperti 'a' atau '@' atau karakter lainnya. Kode ASCII memiliki komposisi bilangan biner sebanyak 8 bit. Dimulai dari 00000000 hingga 11111111. Total kombinasi yang dihasilkan ASCII sebanyak 256, dimulai dari kode 0 hingga 255 dalam sistem bilangan desimal. \cite{ascii}
 \begin{table}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{gambar/table_ascii}
+	\includegraphics[width=1.0\textwidth]{gambar/table_ascii}
 	\caption{Tabel ASCII}
 	\label{tabel_ascii}
 \end{table}
@@ -182,20 +225,9 @@ ASCII adalah singkatan dari \emph{American Standard Code for Information Interch
 		\label{tabel_perbedaan}
 	\end{table}
 
-\section{MATLAB}
-MATLAB adalah sebuah bahasa untuk komputasi dan pemrograman yang mudah digunakan di mana masalah dan solusinya dinyatakan dalam notasi matematika yang familiar. Awalnya, program ini dikembangkan oleh proyek LINPACK \emph{Linear System Package} dan EISPACK \emph{Eigen System Package}, dikembangkan menggunakan bahasa FORTRAN namun sekarang merupakan produk komersial dari perusahaan Mathworks, Inc. Di lingkungan Universitas MATLAB merupakan \emph{tool} komputasi standar untuk matakuliah-matakuliah dasar atau lanjut di bidang matematika, teknik dan sains. Di dunia industri MATLAB digunakan untuk keperluan riset, pengembangan dan analisis.
-
-Matlab banyak digunakan pada:
-\begin{enumerate}
-	\item Matematika dan omputansi
-	\item Pengembangan algoritma
-	\item Pemrograman modeling, simulasi, dan pembuatan prototipe
-	\item Analisis data, eksplorasi dan visualisasi
-	\item Analisis numerik dan statistik
-	\item Pengembangan aplikasi yang meliputi pembuatan \emph{Graphical User Interface} (GUI) \cite{hermawati}
-\end{enumerate}
-
-
+\section{Konsep RAD}
+	\subsection{Tahapan-Tahapan RAD}
+	\subsection{Keunggulan RAD}
 
 % Baris ini digunakan untuk membantu dalam melakukan sitasi
 % Karena diapit dengan comment, maka baris ini akan diabaikan
