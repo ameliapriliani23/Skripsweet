@@ -4,20 +4,45 @@
 %               		PEMBAHASAN
 %-------------------------------------------------------------------------------
 
-\chapter{METODOLOGI PENELITIAN}
+\chapter{PEMBAHASAN}
 
-Metodologi penelitian adalah cara atau teknik yang disusun secara teratur yang digunakan oleh seorang peneliti untuk mengumpulkan data/informasi dalam melakukan penelitian yang disesuaikan dengan subjek/objek yang diteliti. Selain metode pengumpulan data, juga dibutuhkan metode dalam pengembangan sistem. 
-\section{Metode Pengumpulan Data}
-	\subsection{Studi Pustaka}
-	Penulis mendapatkan informasi yang berkaitan dengan steganografi melalui buku referensi dan juga dalam bentuk \emph{e-book}. Penulis juga mencari informasi melalui berbagai situs di internet yang sesuai dengan topik.	
-	\subsection{Studi Literatur}
-	Penulis mencoba mencari perbandingan dengan studi sejenis dari beberapa karya ilmiah lokal maupun internasional, seperti jurnal dan skripsi.
+\section{Rancangan Algoritma}
+Pada pembuatan steganografi dengan metode LSB ini menggunakan bantuan MATLAB. Dan citra \emph{digital} yang digunakan adalah dengan format BMP, alasan dipilihnya citra dengan format BMP adalah karena kesesuaiannya dengan metode LSB. Dan pesan yang disisipkan adalah pesan dengan format \emph{text}
 
-\section{Metode Pengembangan Sistem}
-Dalam menyusun tugas akhir ini Penulis menggunakan metode \emph{Prototype}. Model \emph{Prototype} dimulai dengan pengumpulan kebutuhan. Pendekatan \emph{prototyping model} digunakan jika pemakai hanya mendefenisikan objektif umum dari perangkat lunak tanpa merinci kebutuhan \emph{input}, pemrosesan dan \emph{output}-nya, sementara pengembang tidak begitu yakin akan efisiensi algoritma, adaptasi sistem operasi, atau bentuk antarmuka manusia-mesin yang harus diambil. 
-	\subsection{Analisis Kebutuhan}
-	Pada tahapan ini Penulis melakukan pengumpulan fakta-fakta kebutuhan yang mendukung perancangan sistem dengan mengadakan konsultasi dengan dosen pembimbing maupun dosen yang berkemampuan dalam bidang ini .
-	\subsection{Perancangan dan Implementasi}
-	Perancangan dan implementasi steganografi pada citra \emph{digital} dengan metode \emph{Least Significant Bit} dibantu dengan menggunakan alat bantu aplikasi Matlab R2016b.
-	\subsection{Pengujian}
-	Pada tahap ini sistem yang sudah dirancang oleh perancang kemudian diuji oleh perancang, dosen pembimbing maupun dosen yang berkemampuan dalam bidang ini.
+	\subsection{Proses Penyisipan (\emph{Encoding}) pesan ke Citra \emph{Digital}}
+	Proses penyisipan pesan ke citra yaitu:
+	\begin{enumerate}
+		\item Siapkan \emph{Cover Image} yang akan disisipkan \emph{Hiddentext}
+		\item Masukkan \emph{Hiddentext} yang akan disisipkan
+		\item \emph{Cover Image} dikonversi setiap nilai \emph{pixel}-nya ke biner, sedangkan \emph{Hiddentext} dikonversi dari huruf ke ASCII dan dikonversi lagi menjadi biner
+		\item Proses \emph{Encoding} dilakukan dengan LSB
+		\item Selanjutnya proses konversi dari biner ke \emph{pixel} yang menghasilkan \emph{Stego Image}
+		\item Hasil dari citra yang telah disisipkan pesan atau \emph{Stego Image} disimpan
+	\end{enumerate}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{gambar/penyisipan2}
+		\caption{\emph{Flowchart} Penyisipan Pesan Rahasia}
+		\label{flowchart_penyisipan}
+	\end{figure}
+	
+	\subsection{Proses Ekstraksi (\emph{Decoding}) pesan dari Citra \emph{Digital}}
+	Proses ekstraksi pesan dari citra yaitu:
+	\begin{enumerate}
+		\item Siapkan \emph{Stego Image} yang telah disisipkan \emph{Hiddentext}
+		\item Konversi \emph{pixel} ke biner
+		\item Proses \emph{Decoding} dilakukan dengan LSB
+		\item Konversi biner ke \emph{pixel} untuk mendapatkan \emph{Cover Image}, dan konversi biner ke ASCII kemudian ke huruf untuk mendapatkan pesan rahasia atau \emph{Hiddentext}
+		\item \emph{Hiddentext} didapatkan
+	\end{enumerate}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{gambar/ekstraksi2}
+		\caption{\emph{Flowchart} Ekstraksi Pesan Rahasia}
+		\label{flowchart_ekstraksi}
+	\end{figure}
+	
+\section{Desain Antar Muka Program}
+\section{Perbedaan Citra Sebelum dan Sesudah disisipkan Pesan}

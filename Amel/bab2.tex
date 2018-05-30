@@ -120,7 +120,7 @@
 		\emph{Spread Spectrum} steganografi terpencar-pencar sebagai pesan yang diacak (\emph{encrypted}) melalui gambar (tidak seperti dalam LSB). Untuk membaca suatu pesan, penerima memerlukan algoritma yaitu \emph{crypto-key} dan \emph{stego-key}. Metode ini juga masih mudah diserang yaitu penghancuran atau pengrusakan dari kompresi dan proses \emph{image} (gambar) \cite{wikipedia1}.
 	\end{enumerate}
 
-	Metode LSB dan \emph{Spread Spectrum} adalah dua metode yang sering digunakan dalam melakukan steganografi. Selain karena metodenya yang sederhana, proses \emph{embedding} dan ekstraksi dari kedua metode tersebut juga \emph{relative} cepat\cite{pavani}. Tetapi LSB memiliki proses \emph{embedding} dan ekstraksi yang lebih cepat dari metode \emph{Spread Spectrum} karena proses metode \emph{Spread Spectrum} harus melalui peng-XOR-an antara pesan dan kata kunci, sedangkan LSB langsung menyisipkan pesan ke dalam gambar \cite{pakereng}.
+	Metode LSB dan \emph{Spread Spectrum} adalah dua metode yang sering digunakan dalam melakukan steganografi. Selain karena metodenya yang sederhana, proses \emph{encoding} dan \emph{decoding} dari kedua metode tersebut juga \emph{relative} cepat\cite{pavani}. Tetapi LSB memiliki proses \emph{encoding} dan \emph{decoding} yang lebih cepat dari metode \emph{Spread Spectrum} karena proses metode \emph{Spread Spectrum} harus melalui proses XOR antara pesan dan kata kunci, sedangkan LSB langsung menyisipkan pesan ke dalam gambar \cite{pakereng}.
 	
 
 \section{Perbedaan Steganografi dan Kriptografi}
@@ -132,7 +132,7 @@ Steganografi dan kriptografi mempunyai prinsip kerja yang berbeda, meskipun kedu
 	\label{perbedaan_kripsteg}
 \end{figure}
 
-Steganografi dan kriptografi merupakan seni dan teknik yang dapat digunakan untuk melakukan pengamanan data digital. Namun keduanya tidaklah sama. Pada kriptografi, suatu data digital diamankan dengan cara mengenkripsi data tersebut dan menghasilkan sebuah data yang berupa sandi, secara visual data tersebut masih dapat terlihat atau diketahui, hanya saja data tersebut menjadi tidak dapat dimengerti. Berbeda dengan steganografi yang tujuannya adalah menyembunyikan data ke dalam sebuah media yang lain, sehingga data tersebut tidak terlihat \cite{setiana}.
+Steganografi dan kriptografi merupakan seni dan teknik yang dapat digunakan untuk melakukan pengamanan data \emph{digital}. Namun keduanya tidaklah sama. Pada kriptografi, suatu data \emph{digital} diamankan dengan cara mengenkripsi data tersebut dan menghasilkan sebuah data yang berupa sandi, secara visual data tersebut masih dapat terlihat atau diketahui, hanya saja data tersebut menjadi tidak dapat dimengerti. Berbeda dengan steganografi yang tujuannya adalah menyembunyikan data ke dalam sebuah media yang lain, sehingga data tersebut tidak terlihat \cite{setiana}.
 
 \section{LSB (\emph{Least Significant Bit})}
 Penyembunyian data dilakukan dengan mengganti bit-bit data di dalam segmen citra dengan bit-bit rahasia. Pada susunan bit di dalam sebuah \emph{byte} (1 \emph{byte}= 8 bit), ada bit yang paling berarti (\emph{most significant bit} atau MSB) dan bit yang paling kurang berarti (\emph{least significant bit} atau LSB). LSB merupakan salah satu metode yang paling sederhanaa dalam steganografi. Bit yang cocok untuk diganti adalah bit LSB, sebab perubahan tersebut hanya mengubah nilai \emph{byte} satu lebih tinggi atau satu lebih rendah dari nilai sebelumnya \cite{munir}.
@@ -190,9 +190,15 @@ ASCII adalah singkatan dari \emph{American Standard Code for Information Interch
 	\label{tabel_ascii}
 \end{table}
 
-\section{\emph{Citra Digital}}
+\section{Citra \emph{Digital}}
 	\subsection{Pengertian Citra \emph{Digital}}
-	Citra atau gambar dapat didefinisikan sebagai sebuah fungsi dua dimensi, f(x,y), x dan y adalah koordinat bidang datar; dan harga fungsi f di setiap pasangan koordinat (x,y) disebut intensitas atau level keabuan (\emph{grey level}) dari gambar di titik itu \cite{hermawati}. Citra \emph{digital} merupakan suatu \emph{array} dua dimensi atau suatu matriks yang elemen-elemennya menyatakan tingkat keabuan dari elemen gambar \cite{arymurthy} 
+	Citra atau gambar dapat didefinisikan sebagai sebuah fungsi dua dimensi, f(x,y), x dan y adalah koordinat bidang datar; dan harga fungsi f di setiap pasangan koordinat (x,y) disebut intensitas atau level keabuan (\emph{grey level}) dari gambar di titik itu \cite{hermawati}. Citra ada 2 macam, yaitu:
+	\begin{enumerate}
+		\item Citra kontinu, yaitu citra yang dihasilkan dari sistem optik yang menerima sinyal analog, misal: mata manusia dan kamera analog.
+		\item Citra diskrit, yaitu citra yang dihasilkan melalui proses digitalisasi terhadap citra kontinu.
+	\end{enumerate}
+	
+	Agar dapat diolah dengan komputer, maka suatu citra harus direpresentasikan secara \emph{numeric} dengan nilai-nilai diskrit. Representasi citra dari fungsi kontinyu menjadi nilai-nilai diskrit disebut digitalisasi, dan citra yang dihasilkan disebut citra \emph{digital}.
 	
 	Ada 3 bidang studi utama yang menangani pengolahan data atau informasi berbentuk gambar atau citra, yaitu:
 	\begin{enumerate}
@@ -225,6 +231,7 @@ ASCII adalah singkatan dari \emph{American Standard Code for Information Interch
 		\label{tabel_perbedaan}
 	\end{table}
 
+\section{Matriks}
 
 % Baris ini digunakan untuk membantu dalam melakukan sitasi
 % Karena diapit dengan comment, maka baris ini akan diabaikan
