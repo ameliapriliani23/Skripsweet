@@ -161,15 +161,15 @@
 %Redefine caption names
 %------------------------------------------------------------
 \def\captionsbahasa{%
-\def\prefacename{KATA PENGANTAR}%
+\def\prefacename{KATA PENGANTAR}
 \def\contentsname{DAFTAR ISI}%
 \def\listfigurename{DAFTAR GAMBAR}%
 \def\listtablename{DAFTAR TABEL}%
 \def\listappendixname{DAFTAR LAMPIRAN}%
 \def\nomenclaturename{DAFTAR SINGKATAN}%
 \def\abstractname{ABSTRAK}%
-\def\acknowledgmentname{HALAMAN PERSEMBAHAN}%
-\def\approvalname{HALAMAN PENGESAHAN}
+\def\acknowledgmentname{HALAMAN PERSEMBAHAN}
+\def\approvalname{HALAMAN PENGESAHAN}%
 \def\partname{BAGIAN}%
 \def\chaptername{BAB}%
 \def\appendixname{LAMPIRAN}%
@@ -250,7 +250,7 @@
       \begin{singlespace}
       \fontsize{14pt}{16pt}\selectfont\MakeUppercase{\normalfont\bfseries\@titleind}\par\nobreak
       \vspace{1.5cm}
-      \MakeUppercase{\normalfont\bfseries Skripsi }\\
+      \MakeUppercase{\normalfont\bfseries Proposal Skripsi }\\
       \vspace{.5cm}
       Disusun untuk melengkapi syarat-syarat guna memperoleh gelar\\
       Sarjana Komputer\\
