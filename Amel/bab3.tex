@@ -10,39 +10,35 @@
 Pada pembuatan steganografi dengan metode LSB ini menggunakan bantuan MATLAB. Dan citra \emph{digital} yang digunakan adalah dengan format BMP, alasan dipilihnya citra dengan format BMP adalah karena kesesuaiannya dengan metode LSB. Dan pesan yang disisipkan adalah pesan dengan format \emph{text}
 
 	\subsection{Proses Penyisipan (\emph{Encoding}) pesan ke Citra \emph{Digital}}
-	Proses penyisipan pesan ke citra yaitu:
-	\begin{enumerate}
-		\item Siapkan \emph{Cover Image} yang akan disisipkan \emph{Hiddentext}
-		\item Masukkan \emph{Hiddentext} yang akan disisipkan
-		\item \emph{Cover Image} dikonversi setiap nilai \emph{pixel}-nya ke biner, sedangkan \emph{Hiddentext} dikonversi dari huruf ke ASCII dan dikonversi lagi menjadi biner
-		\item Proses \emph{Encoding} dilakukan dengan LSB
-		\item Selanjutnya proses konversi dari biner ke \emph{pixel} yang menghasilkan \emph{Stego Image}
-		\item Hasil dari citra yang telah disisipkan pesan atau \emph{Stego Image} disimpan
-	\end{enumerate}
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=1\textwidth]{gambar/penyisipan2}
+		\includegraphics[width=1\textwidth]{gambar/penyisipan3}
 		\caption{\emph{Flowchart} Penyisipan Pesan Rahasia}
 		\label{flowchart_penyisipan}
 	\end{figure}
+
+	Pada gambar di atas adalah \emph{flowchart} proses penyisipan pesan ke dalam \emph{file}
+	citra (\emph{Cover Image}). Dimulai dengan membaca \emph{file} citra RGB. Untuk \emph{file} bitmap 24 bit maka setiap \emph{pixel} (titik) pada gambar tersebut terdiri dari susunan
+	tiga warna Merah, Hijau dan Biru (RGB) yang masing-masing disusun oleh bilangan 8 bit
+	(1 \emph{byte}) dari 0 sampai 255 atau dengan format biner 00000000 sampai 11111111. Setelah
+	membaca \emph{pixel} dari \emph{file} citra langkah selanjutnya menentukan bit terkecil (LSB) pada \emph{Cover Image}.
+	
+	Selanjutnya adalah menyisipkan pesan (\emph{Hiddentext}) yang akan disembunyikan ke dalam \emph{Cover Image}. Pesan tersebut dikonversi terlebih dahulu menjadi nilai ASCII dan kemudian dikonversi kembali menjadi nilai Biner. Setelah itu terjadilah proses penyisipan (\emph{Encoding}). Selanjutnya biner yang telah disisipkan akan dikonversikan kembali ke dalam \emph{pixel}. Dan menyimpan citra yang telah disisipkan pesan ke dalam \emph{Cover Image} sehingga diperoleh atau	dapat ditampilkan sebuah gambar baru (\emph{Stego Image}).
 	
 	\subsection{Proses Ekstraksi (\emph{Decoding}) pesan dari Citra \emph{Digital}}
-	Proses ekstraksi pesan dari citra yaitu:
-	\begin{enumerate}
-		\item Siapkan \emph{Stego Image} yang telah disisipkan \emph{Hiddentext}
-		\item Konversi \emph{pixel} ke biner
-		\item Proses \emph{Decoding} dilakukan dengan LSB
-		\item Konversi biner ke \emph{pixel} untuk mendapatkan \emph{Cover Image}, dan konversi biner ke ASCII kemudian ke huruf untuk mendapatkan pesan rahasia atau \emph{Hiddentext}
-		\item \emph{Hiddentext} didapatkan
-	\end{enumerate}
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=1\textwidth]{gambar/ekstraksi2}
+		\includegraphics[width=1\textwidth]{gambar/ekstraksi3}
 		\caption{\emph{Flowchart} Ekstraksi Pesan Rahasia}
 		\label{flowchart_ekstraksi}
 	\end{figure}
+
+	Pada gambar di atas adalah \emph{flowchart} proses ekstraksi pesan dari \emph{Stego Image} yang menghasilkan \emph{Hiddentext} yang terdapat di dalamnya. Prosesnya dimulai dengan
+	membaca \emph{file} citra, dan mengubah \emph{pixel} ke dalam nilai biner.
+	Kemudian proses ekstrasi (\emph{Decoding}). Setelah diperoleh bit-bit yang tersembunyi pada \emph{Cover Image} maka proses
+	berikutnya adalah mengkonversi kembali pesan yang tersembunyi (\emph{Hiddentext}), sehingga pesan dapat ditampilkan kembali.
 	
 \section{Desain Antar Muka Program}
 \section{Perbedaan Citra Sebelum dan Sesudah disisipkan Pesan}
