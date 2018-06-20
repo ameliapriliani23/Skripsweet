@@ -4,7 +4,16 @@
 %               		PEMBAHASAN
 %-------------------------------------------------------------------------------
 
-\chapter{PEMBAHASAN}
+\chapter{HASIL DAN PEMBAHASAN}
+
+Dalam penelitian ini tahapan yang akan dilakukan adalah seperti gambar di bawah ini
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{gambar/alur_penelitian}
+	\caption{Alur Penelitian}
+	\label{alur_penelitian}
+\end{figure}
 
 \section{Pengumpulan Data}
 \begin{enumerate}
@@ -48,4 +57,46 @@
 	berikutnya adalah mengkonversi kembali pesan yang tersembunyi (\emph{Hiddentext}), sehingga pesan dapat ditampilkan kembali.
 
 	\subsection{Desain Antar Muka Program}
+	
+	Berikut adalah desain antar muka dari program steganografi yang dibangun dengan menggunakan Matlab.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{gambar/mockup/1}
+		\caption{Desain \emph{Form} Steganografi}
+		\label{desain_form}
+	\end{figure}
 
+	Dari tampilan tersebut, pengambilan gambar yang akan dijadikan sebagai \emph{Cover Image} dilakukan dengan menekan tombol "\emph{Browse Image}" dan gambar akan tampil. 
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{gambar/mockup/2}
+		\caption{Desain \emph{Form} - \emph{Cover Image}}
+		\label{desain_image}
+	\end{figure}
+
+	Setelah \emph{Cover Image} tampil maka pesan yang akan disisipkan atau \emph{Hiddentext} dapat dituliskan pada kolom pesan. Dan kemudian klik tombol \emph{Encoding} untuk melakukan proses \emph{Encoding}. Setelah proses \emph{Encoding}, maka akan didapatkan \emph{Stego Image} dan disimpan di folder yang sama.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{gambar/mockup/3}
+		\caption{Desain \emph{Form} - Proses \emph{Encoding}}
+		\label{desain_encoding}
+	\end{figure}
+
+	Jika ingin melakukan proses \emph{Decoding}, maka buka \emph{Stego Image} yang telah disimpan. Kemudian klik tombol \emph{Decoding} dan pesan akan didapatkan.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{gambar/mockup/4}
+		\caption{Desain \emph{Form} - Proses \emph{Decoding}}
+		\label{desain_decoding}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{gambar/mockup/5}
+		\caption{Desain \emph{Form} - Pesan Hasil \emph{Decoding}}
+		\label{desain_pesan}
+	\end{figure}
