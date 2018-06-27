@@ -122,6 +122,13 @@
 
 	Metode LSB dan \emph{Spread Spectrum} adalah dua metode yang sering digunakan dalam melakukan steganografi. Selain karena metodenya yang sederhana, proses \emph{encoding} dan \emph{decoding} dari kedua metode tersebut juga \emph{relative} cepat\cite{pavani}. Tetapi LSB memiliki proses \emph{encoding} dan \emph{decoding} yang lebih cepat dari metode \emph{Spread Spectrum} karena proses metode \emph{Spread Spectrum} harus melalui proses XOR antara pesan dan kata kunci, sedangkan LSB langsung menyisipkan pesan ke dalam gambar \cite{pakereng}.
 	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{gambar/spreadlsb}
+		\caption{\emph{Flowchart Encoding} LSB dan \emph{Spread Spectrum}}
+		\label{spreadlsb}
+	\end{figure}
+	
 
 \section{Perbedaan Steganografi dan Kriptografi}
 Steganografi dan kriptografi mempunyai prinsip kerja yang berbeda, meskipun keduanya mempunyai hubungan yang dekat dalam dunia keamanan data. Pada kriptografi menghasilkan sebuah \emph{chipertext} dimana dengan itu seolah-olah dengan sengaja menunjukkan kepada orang lain bahwa ada sesuatu di dalamnya, namun tidak dapat diketahui maknanya. Namun dengan bentuk \emph{chiper}-nya, justru akan membuat data tersebut terancam oleh usaha-usaha yang dilakukan oleh orang lain untuk dapat membongkarnya dengan tujuan dan atau alasan apapun.
