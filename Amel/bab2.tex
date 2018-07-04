@@ -111,7 +111,7 @@
 	Ada empat jenis metode steganografi:
 	\begin{enumerate}
 		\item \emph{Least Significant Bit Insertion} (LSB)\\
-		Metode yang digunakan untuk menyembunyikan pesan pada media \emph{digital} tersebut berbeda-beda. Contohnya, pada berkas \emph{image} pesan dapat disembunyikan dengan menggunakan cara menyisipkannya pada bit rendah atau bit yang paling kanan (LSB) pada data \emph{pixel} yang menyusun \emph{file} tersebut. Pada berkas \emph{bitmap} 24 bit, setiap \emph{pixel} (titik) pada gambar tersebut terdiri dari susunan tiga warna \emph{Red}, \emph{Green} dan \emph{Blue} (RGB) yang masing-masing disusun oleh bilangan 8 bit (\emph{byte}) dari 0 sampai 255 atau dengan format biner 00000000 sampai 11111111. Dengan demikian, pada setiap \emph{pixel} berkas \emph{bitmap} 24 bit kita dapat menyisipkan 3 bit data. 
+		Metode yang digunakan untuk menyembunyikan pesan pada media \emph{digital} tersebut berbeda-beda. Contohnya, pada berkas \emph{image} pesan dapat disembunyikan dengan menggunakan cara menyisipkannya pada bit rendah atau bit yang paling kanan (LSB) pada data \emph{pixel} yang menyusun \emph{file} tersebut. Pada berkas \emph{bitmap} 24 bit, setiap \emph{pixel} (titik) pada gambar tersebut terdiri dari susunan tiga warna \emph{Red}, \emph{Green} dan \emph{Blue} (RGB) yang masing-masing disusun oleh bilangan 8 bit (\emph{byte}) dari 0 sampai 255 atau dengan format biner 00000000 sampai 11111111. Dengan demikian, pada setiap \emph{pixel} berkas \emph{bitmap} 24 bit kita dapat menggantikan 3 bit data di setiap bit terakhir. 
 		\item \emph{Algorithms and Transformation}\\
 		\emph{Algoritma compression} adalah metode steganografi dengan menyembunyikan data dalam fungsi matematika. Dua fungsi tersebut adalah \emph{Discrete Cosine Transformation} (DCT) dan \emph{Wavelet Transformation}. Fungsi DCT dan \emph{Wavelet} yaitu mentransformasi data dari satu tempat (\emph{domain}) ke tempat (\emph{domain}) yang lain. Fungsi DCT yaitu mentransformasi data dari tempat \emph{spatial} (\emph{spatial domain}) ke tempat frekuensi (\emph{frequency domain}).
 		\item \emph{Redundant Pattern Encoding}\\
@@ -152,7 +152,7 @@ Pada \emph{file bitmap} 24 bit, setiap bit masing-masing memiliki komponen \emph
 	(00010011 10101010 01100011)\\
 \end{figure}
 
-Karakter "A" mempunyai nilai biner 01000001, maka bit hasil penyisipannya adalah:
+Karakter "A" mempunyai nilai biner 01000001, maka bit-bit yang dihasilkan adalah:
 \begin{figure}[H]
 	\centering
 	(00001000 00101011 11011100)\\
@@ -173,7 +173,7 @@ Bit-bit yang nilainya berganti ada 3 dalam 8 \emph{Byte} yang digunakan. Contoh 
 	(01111001 00110011 00110101)\\
 \end{figure}
 
-Kata "ADA" mempunyai biner A = 01000001, D = 01000100, maka bit hasil penyisipannya adalah:
+Kata "ADA" mempunyai biner A = 01000001, D = 01000100, maka bit-bit yang dihasilkan adalah:
 \begin{figure}[H]
 	\centering
 	(1001101\textbf{0} 0110010\textbf{1} 01010000)\\
@@ -189,11 +189,11 @@ Kata "ADA" mempunyai biner A = 01000001, D = 01000100, maka bit hasil penyisipan
 Bit-bit yang nilainya berganti ada 13 dalam 24 \emph{Byte} yang digunakan. Secara rata-rata, LSB hanya menggunakan setengah dari bit dalam gambar yang perlu dimodifikasi untuk menyembunyikan pesan rahasia. Perubahan ini tidak dapat dirasakan oleh mata manusia, dan pesan berhasil disembunyikan \cite{elgabar2}.
 
 \section{ASCII}
-ASCII adalah singkatan dari \emph{American Standard Code for Information Interchange}. Komputer hanya dapat memahami angka, jadi kode ASCII adalah representasi numerik dari karakter seperti 'a' atau '@' atau karakter lainnya. Kode ASCII memiliki komposisi bilangan biner sebanyak 8 bit. Dimulai dari 00000000 hingga 11111111. Total kombinasi yang dihasilkan ASCII sebanyak 256, dimulai dari kode 0 hingga 255 dalam sistem bilangan desimal. \cite{ascii}
+ASCII adalah singkatan dari \emph{American Standard Code for Information Interchange}. Komputer hanya dapat memahami angka, jadi kode ASCII adalah representasi numerik dari karakter seperti 'a' atau '@' atau karakter lainnya. Kode ASCII sebenarnya memiliki komposisi bilangan biner sebanyak 7 bit. Namun, ASCII disimpan sebagai sandi 8 bit dengan menambakan satu angka 0 sebagai bit significant paling tinggi, dan disebut dengan \emph{Extended ASCII}. Dimulai dari 00000000 hingga 11111111. Total kombinasi yang dihasilkan ASCII sebanyak 256, dimulai dari kode 0 hingga 255 dalam sistem bilangan desimal. \cite{ascii}
 \begin{table}[H]
 	\centering
+	\caption{Tabel ASCII \cite{tableascii}}
 	\includegraphics[width=1.0\textwidth]{gambar/table_ascii}
-	\caption{Tabel ASCII}
 	\label{tabel_ascii}
 \end{table}
 
@@ -233,8 +233,8 @@ ASCII adalah singkatan dari \emph{American Standard Code for Information Interch
 	Perbedaan komponen antara masing-masing format \emph{file} citra \emph{digital} dapat dilihat pada Tabel \ref{tabel_perbedaan}. 
 	\begin{table}[H]
 		\centering
-		\includegraphics[width=0.8\textwidth]{gambar/table_perbedaan}
-		\caption{Perbedaan \emph{file} citra \emph{digital}}
+		\caption{Perbedaan \emph{file} citra \emph{digital} \cite{gautam}}
+		\includegraphics[width=1.0\textwidth]{gambar/table_perbedaan}
 		\label{tabel_perbedaan}
 	\end{table}
 
