@@ -250,7 +250,7 @@
       \begin{singlespace}
       \fontsize{14pt}{16pt}\selectfont\MakeUppercase{\normalfont\bfseries\@titleind}\par\nobreak
       \vspace{1.5cm}
-      \MakeUppercase{\normalfont\bfseries Proposal Skripsi }\\
+      \MakeUppercase{\normalfont\bfseries Skripsi }\\
       \vspace{.5cm}
       Disusun untuk melengkapi syarat-syarat guna memperoleh gelar\\
       Sarjana Komputer\\
