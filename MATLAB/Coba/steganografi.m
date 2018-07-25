@@ -22,7 +22,7 @@ function varargout = steganografi(varargin)
 
 % Edit the above text to modify the response to help steganografi
 
-% Last Modified by GUIDE v2.5 16-Jun-2018 20:45:40
+% Last Modified by GUIDE v2.5 17-Jul-2018 20:20:25
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -90,6 +90,7 @@ imshow(image);
 lokasi_image = fullfile(format_file, nama_file);
 set(handles.kolom_lokasi,'String',lokasi_image);
 
+
 function kolom_lokasi_Callback(hObject, eventdata, handles)
 % hObject    handle to kolom_lokasi (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -133,82 +134,86 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
     set(hObject,'BackgroundColor','white');
 end
 
-
 % --- Executes on button press in pushbutton_encoding.
 function pushbutton_encoding_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton_encoding (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 global image;
+global hiddentext_simpan;
 
-[baris, kolom, channel] = size(image);
+[row, column, channel] = size(image);
 image_red   = image(:,:,1);
 image_green = image(:,:,2);
 image_blue  = image(:,:,3);
-%penentuan maksimal karakter pesan dengan maksimal 1 penyisipan / piksel
-karakter_max = (baris -1)*(kolom);
-karakter_max = round((karakter_max*3)/8); %perchannel warna
 
-pesan = get(handles.edit_pesan,'String')
-if isempty(pesan) %cek kondisi kolom pesan
+%penentuan maksimal karakter pesan 
+char_max = (row -1)*(column);
+char_max = round((char_max*3)/8); %perchannel warna
+
+hiddentext = get(handles.edit_pesan,'String')
+if isempty(hiddentext) %cek kondisi kolom pesan
     msgbox('Pesan belum dimasukkan','Peringatan','warn');
-    return;
+    return;    
 end
 
 %perhitungan panjang pesan di textfield
-baris_max = baris;
-kolom_max = kolom;
-panjang_pesan = length(pesan) %masih dalam hitungan desimal
-if panjang_pesan < karakter_max 
-    pesan_biner = reshape(dec2bin(double(pesan),8).',1,[])
-    pesan_asli = char(bin2dec(reshape(pesan_biner,8,[]).')).'
+row_max = row;
+column_max = column;
+hiddentext_length = length(hiddentext) %masih dalam hitungan desimal
+if hiddentext_length < char_max 
+    hiddentext_biner = strcat(reshape(dec2bin(double(hiddentext),8).',1,[]), '00000000')
+    hiddentext_simpan = hiddentext_biner;
+    hiddentext_asli = char(bin2dec(reshape(hiddentext_biner,8,[]).')).'
+    
 else
     msgbox('Maaf,pesan terlalu panjang','peringatan','warn');
     return;
 end
 
-panjang_pesan = panjang_pesan*8;
-for i = 1:baris_max-1
-    for j = 1:kolom_max    
-        if panjang_pesan ~= 0
-            gambar_biner_red = dec2bin(image_red(i,j),8); %11100100 contoh biner
-            gambar_biner_red(1,8) = pesan_biner(1,1); %bit terakhir diganti
-            image_red(i,j) = bin2dec(gambar_biner_red); 
+%enkripsi
+hiddentext_length = hiddentext_length*8;
+for i = 1:row_max-1
+    for j = 1:column_max    
+        if hiddentext_length ~= 0
+            image_biner_red = dec2bin(image_red(i,j),8); %11100100 contoh biner
+            image_biner_red(1,8) = hiddentext_biner(1,1); %bit terakhir diganti
+            image_red(i,j) = bin2dec(image_biner_red); 
               
-            pesan_biner(1:1) = [];  %menghapus1 bit pertama pesan
-            panjang_pesan = length(pesan_biner);             
+            hiddentext_biner(1:1) = [];  %menghapus 1 bit pertama pesan
+            hiddentext_length = length(hiddentext_biner); %menghitung panjang bit pesan            
         end
         
-        if panjang_pesan ~= 0
-            gambar_biner_green = dec2bin(image_green(i,j),8);
-            gambar_biner_green(1,8) = pesan_biner(1,1);
-            image_green(i,j) = bin2dec(gambar_biner_green);
+        if hiddentext_length ~= 0
+            image_biner_green = dec2bin(image_green(i,j),8);
+            image_biner_green(1,8) = hiddentext_biner(1,1);
+            image_green(i,j) = bin2dec(image_biner_green);
               
-            pesan_biner(1:1) = []; 
-            panjang_pesan = length(pesan_biner); 
+            hiddentext_biner(1:1) = []; 
+            hiddentext_length = length(hiddentext_biner); 
         end
         
-        if panjang_pesan ~= 0
-            gambar_biner_blue = dec2bin(image_blue(i,j),8);
-            gambar_biner_blue(1,8) = pesan_biner(1,1); 
-            image_blue(i,j) = bin2dec(gambar_biner_blue); 
+        if hiddentext_length ~= 0
+            image_biner_blue = dec2bin(image_blue(i,j),8);
+            image_biner_blue(1,8) = hiddentext_biner(1,1); 
+            image_blue(i,j) = bin2dec(image_biner_blue); 
               
-            pesan_biner(1:1) = []; 
-            panjang_pesan = length(pesan_biner); 
+            hiddentext_biner(1:1) = []; 
+            hiddentext_length = length(hiddentext_biner); 
         end
     end
 end
 
-gambar_stego(:,:,1) = uint8(image_red);
-gambar_stego(:,:,2) = uint8(image_green);
-gambar_stego(:,:,3) = uint8(image_blue);
+stego_image(:,:,1) = uint8(image_red);
+stego_image(:,:,2) = uint8(image_green);
+stego_image(:,:,3) = uint8(image_blue);
 
 [nama_file, direktori] = uiputfile('*.bmp','Simpan Stego Image');
 if direktori == 0
     return;
 end
 nama = fullfile(direktori, nama_file);
-imwrite(gambar_stego, nama, 'bmp');
+imwrite(stego_image, nama, 'bmp');
 msgbox('Stego Image telah berhasil dibuat','pemberitahuan');
 
 
@@ -218,60 +223,87 @@ function pushbutton_decoding_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 global image;
+global hiddentext_simpan;
 
-[baris, kolom, channel] = size(image);
+[row, column, channel] = size(image);
 image_red   = image(:,:,1);
 image_green = image(:,:,2);
 image_blue  = image(:,:,3);
-baris_max = baris;
-kolom_max = kolom;
+row_max = row;
+column_max = column;
 
-piksel_red = dec2bin(image_red(baris_max,1),8);
-piksel_green = dec2bin(image_green(baris_max,1),8);
-piksel_blue = dec2bin(image_blue(baris_max,1),8);
-
-pesan_red = piksel_red(7:8);
-pesan_green = piksel_green(7:8);
-pesan_blue = piksel_blue(7:8);
-
-panjang_pesan = strcat(pesan_red, pesan_green, pesan_blue);
-panjang_pesan = bin2dec(reshape(panjang_pesan,12,[]).')
+hiddentext_length = length(hiddentext_simpan);
 
 %ekstraksi
-pesan = '';
-for i = 1:baris_max-1
-    for j = 1:kolom_max
-        panjang_biner = length(pesan);
-        if panjang_biner < panjang_pesan*8
-            gambar_biner_red = dec2bin(image_red(i,j),8);
-            pesan_red = gambar_biner_red(1,8);
-            pesan = strcat(pesan, pesan_red);
+hiddentext = '';
+var_null = 1;
+for i = 1:row_max-1
+    for j = 1:column_max
+        biner_length = length(hiddentext);
+        if biner_length < hiddentext_length && var_null<=8
+            image_biner_red = dec2bin(image_red(i,j),8); %11100101 binernya 
+            hiddentext_red = image_biner_red(1,8); %diambil '1' dari bit yang terakhir
+            hiddentext = strcat(hiddentext, hiddentext_red); %digabungin sama si hiddentext yg awalnya kosong
+            if hiddentext_red == 0
+                var_null = var_null + 1;
+            else
+                var_null = 1;
+            end   
         else
-            pesan_asli = char(bin2dec(reshape(pesan,8,[]).')).';
-            set(handles.edit_pesan,'String',pesan_asli);
+            hiddentext_asli = char(bin2dec(reshape(hiddentext,8,[]).')).';
+            set(handles.edit_pesan,'String',hiddentext_asli);
             return;
         end
-        
-        panjang_biner = length(pesan);
-        if panjang_biner < panjang_pesan*8
-            gambar_biner_green = dec2bin(image_green(i,j),8);
-            pesan_green = gambar_biner_green(1,8);
-            pesan = strcat(pesan, pesan_green);
+
+        biner_length = length(hiddentext);
+        if biner_length < hiddentext_length && var_null<=8
+            image_biner_green = dec2bin(image_green(i,j),8);
+            hiddentext_green = image_biner_green(1,8);
+            hiddentext = strcat(hiddentext, hiddentext_green);
+            if hiddentext_green == 0
+                var_null = var_null+1;
+            else
+                var_null = 1;
+            end   
         else
-            pesan_asli = char(bin2dec(reshape(pesan,8,[]).')).';
-            set(handles.edit_pesan,'String',pesan_asli);
+            hiddentext_asli = char(bin2dec(reshape(hiddentext,8,[]).')).';
+            set(handles.edit_pesan,'String',hiddentext_asli);
             return;
         end
-        
-        panjang_biner = length(pesan);
-        if panjang_biner < panjang_pesan*8
-            gambar_biner_blue = dec2bin(image_blue(i,j),8);
-            pesan_blue = gambar_biner_blue(1,8);
-            pesan = strcat(pesan, pesan_blue);
+
+        biner_length = length(hiddentext);
+        if biner_length < hiddentext_length && var_null<=8
+            image_biner_blue = dec2bin(image_blue(i,j),8);
+            hiddentext_blue = image_biner_blue(1,8);
+            hiddentext = strcat(hiddentext, hiddentext_blue);
+            if hiddentext_blue == 0
+                var_null = var_null+1;
+                %fprintf('%c',var_null)
+            else
+                var_null = 1;
+            end   
         else
-            pesan_asli = char(bin2dec(reshape(pesan,8,[]).')).';
-            set(handles.edit_pesan,'String',pesan_asli);
+            hiddentext_asli = char(bin2dec(reshape(hiddentext,8,[]).')).';
+            set(handles.edit_pesan,'String',hiddentext_asli);
             return;
         end
+       
     end
 end
+
+% --- Executes on button press in pushbutton_clear.
+function pushbutton_clear_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton_clear (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+delete(handles.axes2);
+delete(handles.kolom_lokasi);
+delete(handles.edit_pesan);
+
+
+% --- Executes on button press in pushbutton_exit.
+function pushbutton_exit_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton_exit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+close all;
