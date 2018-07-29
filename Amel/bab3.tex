@@ -145,3 +145,49 @@ Proses \emph{Decoding} merupakan proses pengambilan kembali pesan atau \emph{Hid
 	\end{figure}
 	
 \section{Hasil Steganografi}
+Setelah dilakukan pengujian terhadap program Steganografi, maka didapatkan hasil sebagai berikut:
+	\subsection{Pengujian Berdasarkan \emph{Imperceptible}}
+	Pengujian ini menguji kualitas citra \emph{digital}, apakah citra \emph{digital} akan mengalami perubahan yang mencurigakan atau tidak secara visual. Pengujian ini dikatakan berhasil apabila kualitas dari \emph{Stego Image} yang dihasilkan tidak berbeda jika dibandingkan dengan berkas aslinya atau \emph{Cover Image}.
+
+	%gambar cover
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.75\textwidth]{gambar/matlab/lena}
+		\caption{\emph{Cover Image}}
+		\label{lena_asli}
+	\end{figure}
+
+	%gambar stego
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.75\textwidth]{gambar/matlab/lena_kalimat}
+		\caption{\emph{Stego Image}}
+		\label{lena_pesan}
+	\end{figure}
+
+	\subsection{Pengujian Berdasarkan \emph{Fidelity}}
+	Pengujian ini berdasarkan proses penyembunyiaan pesan atau \emph{Encoding}. Pada proses penyembunyian pesan dapat berhasil apabila ukuran pesan yang akan disembunyikan sesuai dengan kapasitas \emph{file} citra. Apabila ukuran pesan melebihi kapasitas maksimal dari \emph{file} citra, maka program tidak akan melanjutkan proses \emph{Encoding}. Kapasitas pesan dipengaruhi oleh ukuran \emph{pixel} dari citra \emph{digital}. Semakin besar ukuran \emph{pixel} dari citra \emph{digital}, maka semakin besar pula kapasitas pesan yang bisa disembunyikan.
+	
+	%masukkin tabel
+	\begin{table}[H]
+		\centering
+		\caption{Hasil Proses \emph{Encoding}}
+		\includegraphics[width=1.0\textwidth]{gambar/table_hasilencode}
+		\label{tabel_hasilencode2}
+	\end{table}
+	
+	\subsection{Pengujian Berdasarkan \emph{Recovery}}
+	Pengujian ini berdasarkan proses ektraksi pesan atau \emph{Decoding}. Untuk membuktikan apakah program steganografi ini berhasil, maka harus dapat dibuktikan bahwa pesan di dalam \emph{Stego Image} dapat diambil kembali. Jika pengujian dilakukan dengan benar, maka \emph{Hiddentext} dapat ditampilkan sesuai dengan yang dimasukkan. 
+	
+	Pada penelitian ini, pesan yang dihasilkan dari proses \emph{Decoding} tidak menghasilkan karakter-karakter aneh yang tidak dapat dibaca. Hasil dari pengujian ekstraksi pesan dapat dilihat pada tabel 3.2
+	 
+	%masukkin tabel
+	\begin{table}[H]
+		\centering
+		\caption{Hasil Proses \emph{Decoding}}
+		\includegraphics[width=1.0\textwidth]{gambar/table_hasildecode2}
+		\label{tabel_hasildecode2}
+	\end{table}
+	
+	\subsection{Kesimpulan Pengujian}
+	

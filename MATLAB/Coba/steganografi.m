@@ -134,13 +134,14 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
     set(hObject,'BackgroundColor','white');
 end
 
+
 % --- Executes on button press in pushbutton_encoding.
 function pushbutton_encoding_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton_encoding (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 global image;
-global hiddentext_simpan;
+global hiddentext_save;
 
 [row, column, channel] = size(image);
 image_red   = image(:,:,1);
@@ -151,19 +152,27 @@ image_blue  = image(:,:,3);
 char_max = (row -1)*(column);
 char_max = round((char_max*3)/8); %perchannel warna
 
-hiddentext = get(handles.edit_pesan,'String')
-if isempty(hiddentext) %cek kondisi kolom pesan
+%cek kondisi lokasi gambar
+lokasi = get(handles.kolom_lokasi, 'String')
+if isempty(lokasi) %cek kondisi axes
+    msgbox('Gambar belum dimasukkan','Peringatan','warn');
+    return;    
+end
+
+%cek kondisi kolom pesan
+hiddentext = get(handles.edit_pesan,'String');
+if isempty(hiddentext)
     msgbox('Pesan belum dimasukkan','Peringatan','warn');
     return;    
 end
 
-%perhitungan panjang pesan di textfield
+%perhitungan panjang pesan
 row_max = row;
 column_max = column;
 hiddentext_length = length(hiddentext) %masih dalam hitungan desimal
 if hiddentext_length < char_max 
     hiddentext_biner = strcat(reshape(dec2bin(double(hiddentext),8).',1,[]), '00000000')
-    hiddentext_simpan = hiddentext_biner;
+    hiddentext_save = hiddentext_biner;
     hiddentext_asli = char(bin2dec(reshape(hiddentext_biner,8,[]).')).'
     
 else
@@ -171,13 +180,13 @@ else
     return;
 end
 
-%enkripsi
+%encoding
 hiddentext_length = hiddentext_length*8;
 for i = 1:row_max-1
     for j = 1:column_max    
         if hiddentext_length ~= 0
             image_biner_red = dec2bin(image_red(i,j),8); %11100100 contoh biner
-            image_biner_red(1,8) = hiddentext_biner(1,1); %bit terakhir diganti
+            image_biner_red(1,8) = hiddentext_biner(1,1); %bit terakhir diganti dengan bit  pesan
             image_red(i,j) = bin2dec(image_biner_red); 
               
             hiddentext_biner(1:1) = [];  %menghapus 1 bit pertama pesan
@@ -222,8 +231,9 @@ function pushbutton_decoding_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton_decoding (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
 global image;
-global hiddentext_simpan;
+global hiddentext_save;
 
 [row, column, channel] = size(image);
 image_red   = image(:,:,1);
@@ -232,9 +242,9 @@ image_blue  = image(:,:,3);
 row_max = row;
 column_max = column;
 
-hiddentext_length = length(hiddentext_simpan);
+hiddentext_length = length(hiddentext_save);
 
-%ekstraksi
+%decoding
 hiddentext = '';
 var_null = 1;
 for i = 1:row_max-1
@@ -278,7 +288,6 @@ for i = 1:row_max-1
             hiddentext = strcat(hiddentext, hiddentext_blue);
             if hiddentext_blue == 0
                 var_null = var_null+1;
-                %fprintf('%c',var_null)
             else
                 var_null = 1;
             end   
@@ -296,9 +305,13 @@ function pushbutton_clear_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton_clear (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-delete(handles.axes2);
-delete(handles.kolom_lokasi);
-delete(handles.edit_pesan);
+%delete(handles.axes2);
+%delete(handles.kolom_lokasi);
+%delete(handles.edit_pesan);
+set(handles.edit_pesan,'String','')
+set(handles.kolom_lokasi,'String','')
+axes(handles.axes2); cla;
+clearvars variables hiddentext_save;
 
 
 % --- Executes on button press in pushbutton_exit.
@@ -306,4 +319,5 @@ function pushbutton_exit_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton_exit (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+clearvars;
 close all;
