@@ -1,168 +1,136 @@
 \addcontentsline{toc}{chapter}{LAMPIRAN}
 \appendix 
-
-\chapter{Kuisioner Identifikasi oleh Ahli}
-\includegraphics[width=1\textwidth]{pdf/hal_1_ahli}
-\includepdf[pages=2-, scale=0.8]{pdf/identifikasi_ahli.pdf}
-
-\chapter{Kuisioner Identifikasi oleh Awam}
-\includegraphics[width=1\textwidth]{pdf/hal_1_masyarakat}
-\includepdf[pages=2-, scale=0.8]{pdf/identifikasi_masyarakat.pdf}
-
-
-\chapter{Sampel API Buatan Penulis Bagian Model}
+\chapter{\emph{Source Code}}
 	\begin{verbatim}
-		function get_resep(){
-			$obj = $this->db->select('*')
-							->get('tb_resep');
-			return $obj->result_array();
-		}
+		char_max = (row -1)*(column);
+		char_max = round((char_max*3)/8);
 		
-		function get_list_bahan($id_resep){
-			$obj = $this->db->select('*')
-							->join('tb_list_bahan',
-							'tb_list_bahan.id_bahan = tb_bahan.id_bahan')
-							->join('tb_satuan',
-							'tb_satuan.id_satuan = tb_bahan.id_satuan')
-							->where('id_resep',$id_resep)
-							->get('tb_bahan');
-			return $obj->result_array();
-		}
+		%Cek Kondisi Lokasi
+		lokasi = get(handles.kolom_lokasi, 'String')
+		if isempty(lokasi) %cek kondisi axes
+		msgbox('Gambar belum dimasukkan','Peringatan','warn');
+		return;    
+		end		
+	
+		%Cek Kondisi Kolom Hiddentext
+		hiddentext = get(handles.edit_pesan,'String');
+		if isempty(hiddentext)
+			msgbox('Pesan belum dimasukkan','Peringatan','warn');
+		return;    
+		end
+	
+		%Menghitung Panjang Pesan
+		row_max = row;
+		column_max = column;
+		hiddentext_length = length(hiddentext) %masih dalam hitungan desimal
+		if hiddentext_length < char_max 
+		hiddentext_biner = strcat(reshape(dec2bin(double(hiddentext),8).',1,[]), '00000000')
+		hiddentext_save = hiddentext_biner;
+		hiddentext_asli = char(bin2dec(reshape(hiddentext_biner,8,[]).')).'
 		
-		function get_list_cara($id_resep){
-			$obj = $this->db->select('*')
-						->where('id_resep',$id_resep)
-						->get('tb_cara_memasak');
-			return $obj->result_array();
-		}
+		else
+		msgbox('Maaf,pesan terlalu panjang','peringatan','warn');
+		return;
+		end
+	
+		%Encoding
+		hiddentext_length = hiddentext_length*8;
+		for i = 1:row_max-1
+		for j = 1:column_max    
+		if hiddentext_length ~= 0
+		image_biner_red = dec2bin(image_red(i,j),8); %11100100 contoh biner
+		image_biner_red(1,8) = hiddentext_biner(1,1); %bit terakhir diganti dengan bit  pesan
+		image_red(i,j) = bin2dec(image_biner_red); 
 		
-		function get_search_bahan($query){
-			$obj = $this->db->select('*')
-							->join('tb_kategori',
-							'tb_kategori.id_cat = tb_resep.id_cat')
-							->join('tb_bahan',
-							'tb_bahan.id_resep = tb_resep.id_resep')
-							->join('tb_list_bahan',
-							'tb_list_bahan.id_bahan = tb_bahan.id_bahan')
-							->like('nama_bahan',$query)
-							->get('tb_resep');
-			return $obj->result_array();
-		}
+		hiddentext_biner(1:1) = [];  %menghapus 1 bit pertama pesan
+		hiddentext_length = length(hiddentext_biner); %menghitung panjang bit pesan            
+		end
 		
-	\end{verbatim}	
-\chapter{Sampel API Buatan Penulis Bagian Controller}
-	\begin{verbatim}
-		function get_resep(){
-			$query = $this->Masakyuk_model->get_resep();
-			$response = array();
-			$cek = $query;
-			if($cek > 0){
-				$response["resep"]	=array();
-				foreach ($query as $row) {
-					$data=array();
-					$data["id_resep"]		=	$row["id_resep"];
-					$data["id_cat"]	=	$row["id_cat"];
-					$data["judul"]	=	$row["judul"];
-					$data["gambar"]	=	$row["gambar"];
-					$data["link_youtube"]	=	$row["link_youtube"];
-					$data["rekomendasi"]	=	$row["rekomendasi"];
-					array_push($response["resep"], $data);
-				}
-				$response["success"]	= 1;
-				$response["message"]	= "Semua data resep";
-				echo json_encode($response);
-			} else {
-				$response["success"]	= 0;
-				$response["message"]	= "Data resep tidak ditemukan";
-				echo json_encode($response);
-			}
-		}
+		if hiddentext_length ~= 0
+		image_biner_green = dec2bin(image_green(i,j),8);
+		image_biner_green(1,8) = hiddentext_biner(1,1);
+		image_green(i,j) = bin2dec(image_biner_green);
 		
-		function get_list_bahan_resep(){
-			if($this->input->post('id_resep')){
-				$id_resep=$this->input->post('id_resep');
-			}
-			$query = $this->Masakyuk_model->get_list_bahan($id_resep);
-			$response = array();
-			$cek = $query;
-			if($cek > 0){
-				$response["bahan"]	=array();
-				foreach ($query as $row) {
-					$data=array();
-					$data["id_resep"]		=	$row["id_resep"];
-					$data["id_bahan_utama"]		=	$row["id_bahan_utama"];
-					$data["banyaknya"]	=	$row["banyaknya"];
-					$data["satuan"]	=	$row["satuan"];
-					$data["nama_bahan"]	=	$row["nama_bahan"];
-					array_push($response["bahan"], $data);
-				}
-				$response["success"]	= 1;
-				$response["message"]	= "Semua data bahan";
-				echo json_encode($response);
-			} else {
-				$response["success"]	= 0;
-				$response["message"]	= "Data bahan tidak ditemukan";
-				echo json_encode($response);
-			}
-		}
+		hiddentext_biner(1:1) = []; 
+		hiddentext_length = length(hiddentext_biner); 
+		end
 		
-		function get_list_cara_memasak(){
-			if($this->input->post('id_resep')){
-				$id_resep=$this->input->post('id_resep');
-			}
-			$query = $this->Masakyuk_model->get_list_cara($id_resep);
-			$response = array();
-			$cek = $query;
-			if($cek > 0){
-				$response["cara"]	=array();
-				foreach ($query as $row) {
-					$data=array();
-					$data["id_resep"]		=	$row["id_resep"];
-					$data["id_cara_memasak"]		=	$row["id_cara_memasak"];
-					$data["cara"]	=	$row["cara"];
-					array_push($response["cara"], $data);
-				}
-				$response["success"]	= 1;
-				$response["message"]	= "Semua cara memasak resep";
-				echo json_encode($response);
-			} else {
-				$response["success"]	= 0;
-				$response["message"]	= "Data cara memasak tidak ditemukan";
-				echo json_encode($response);
-			}
-		}
+		if hiddentext_length ~= 0
+		image_biner_blue = dec2bin(image_blue(i,j),8);
+		image_biner_blue(1,8) = hiddentext_biner(1,1); 
+		image_blue(i,j) = bin2dec(image_biner_blue); 
 		
-		function get_list_hasil_cari(){
-			if($this->input->post('query')){
-				$query=$this->input->post('query');
-			}
-			$query = $this->Masakyuk_model->get_search_bahan($query);
-			$response = array();
-			$cek = $query;
-			if($cek > 0){
-				$response["resep"]	=array();
-				foreach ($query as $row) {
-					$data=array();
-					$data["id_resep"]		=	$row["id_resep"];
-					$data["id_cat"]	=	$row["id_cat"];
-					$data["cat"]	=	$row["cat"];
-					$data["judul"]	=	$row["judul"];
-					$data["gambar"]	=	$row["gambar"];
-					$data["link_youtube"]	=	$row["link_youtube"];
-					$data["rekomendasi"]	=	$row["rekomendasi"];
-					array_push($response["resep"], $data);
-				}
-				$response["success"]	= 1;
-				$response["message"]	= "Semua data resep";
-				echo json_encode($response);
-			} else {
-				$response["success"]	= 0;
-				$response["message"]	= "Data resep tidak ditemukan";
-				echo json_encode($response);
-			}
-		}		
-	\end{verbatim}	
-
-\chapter{Instrumen Uji Coba Ahli}
-\includegraphics[width=1\textwidth]{pdf/uji_ahli_hal_1}
-\includepdf[pages=2-, scale=0.8]{pdf/uji_ahli.pdf}
+		hiddentext_biner(1:1) = []; 
+		hiddentext_length = length(hiddentext_biner); 
+		end
+		end
+		end
+		
+		stego_image(:,:,1) = uint8(image_red);
+		stego_image(:,:,2) = uint8(image_green);
+		stego_image(:,:,3) = uint8(image_blue);
+		
+		[nama_file, direktori] = uiputfile('*.bmp','Simpan Stego Image');
+		if direktori == 0
+		return;
+		end
+		nama = fullfile(direktori, nama_file);
+		imwrite(stego_image, nama, 'bmp');
+		msgbox('Stego Image telah berhasil dibuat','pemberitahuan');	
+	
+		%Decoding
+		hiddentext = '';
+		var_null = 1;
+		for i = 1:row_max-1
+		for j = 1:column_max
+		biner_length = length(hiddentext);
+		if biner_length < hiddentext_length && var_null<=8
+		image_biner_red = dec2bin(image_red(i,j),8); %11100101 binernya 
+		hiddentext_red = image_biner_red(1,8); %diambil '1' dari bit yang terakhir
+		hiddentext = strcat(hiddentext, hiddentext_red); %digabungin sama si hiddentext yg awalnya kosong
+		if hiddentext_red == 0
+		var_null = var_null + 1;
+		else
+		var_null = 1;
+		end   
+		else
+		hiddentext_asli = char(bin2dec(reshape(hiddentext,8,[]).')).';
+		set(handles.edit_pesan,'String',hiddentext_asli);
+		return;
+		end
+		
+		biner_length = length(hiddentext);
+		if biner_length < hiddentext_length && var_null<=8
+		image_biner_green = dec2bin(image_green(i,j),8);
+		hiddentext_green = image_biner_green(1,8);
+		hiddentext = strcat(hiddentext, hiddentext_green);
+		if hiddentext_green == 0
+		var_null = var_null+1;
+		else
+		var_null = 1;
+		end   
+		else
+		hiddentext_asli = char(bin2dec(reshape(hiddentext,8,[]).')).';
+		set(handles.edit_pesan,'String',hiddentext_asli);
+		return;
+		end
+		
+		biner_length = length(hiddentext);
+		if biner_length < hiddentext_length && var_null<=8
+		image_biner_blue = dec2bin(image_blue(i,j),8);
+		hiddentext_blue = image_biner_blue(1,8);
+		hiddentext = strcat(hiddentext, hiddentext_blue);
+		if hiddentext_blue == 0
+		var_null = var_null+1;
+		else
+		var_null = 1;
+		end   
+		else
+		hiddentext_asli = char(bin2dec(reshape(hiddentext,8,[]).')).';
+		set(handles.edit_pesan,'String',hiddentext_asli);
+		return;
+		end
+		
+		end
+		end
+	\end{verbatim}

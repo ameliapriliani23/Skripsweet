@@ -144,7 +144,7 @@ Steganografi dan kriptografi merupakan seni dan teknik yang dapat digunakan untu
 \section{LSB (\emph{Least Significant Bit})}
 Penyembunyian data dilakukan dengan mengganti bit-bit data di dalam segmen citra dengan bit-bit rahasia. Pada susunan bit di dalam sebuah \emph{byte} (1 \emph{byte}= 8 bit), ada bit yang paling berarti (\emph{most significant bit} atau MSB) dan bit yang paling kurang berarti (\emph{least significant bit} atau LSB). LSB merupakan salah satu metode yang paling sederhanaa dalam steganografi. Bit yang cocok untuk diganti adalah bit LSB, sebab perubahan tersebut hanya mengubah nilai \emph{byte} satu lebih tinggi atau satu lebih rendah dari nilai sebelumnya \cite{munir}.
 
-Pada \emph{file bitmap} 24 bit, setiap bit masing-masing memiliki komponen \emph{Red, Green,} dan \emph{Blue} (RGB), sehingga dapat menyimpan 3 bit pada setiap \emph{pixel}-nya. Pada gambar 800x600 \emph{pixel} dapat digunakan untuk menyembunyikan 1.440.000 bit (180.000 \emph{Byte}) data rahasia. Sebagai contoh diambil 3 \emph{pixel} dari \emph{file bitmap} 24 bit yang akan disisipkan pesan atau data rahasia karakter "A":
+Pada \emph{file bitmap} RGB (\emph{Red, Green,} dan \emph{Blue}), setiap \emph{pixel} memiliki 8 bit \emph{Red}, 8 bit \emph{Green}, dan 8 bit \emph{Blue}. Sehingga dapat menyimpan 3 bit pesan pada setiap \emph{pixel}-nya. Pada gambar 800x600 \emph{pixel} dapat digunakan untuk menyembunyikan 1.440.000 bit (180.000 \emph{Byte}) data rahasia. Sebagai contoh diambil 3 \emph{pixel} dari \emph{file bitmap} 24 bit yang akan disisipkan pesan atau data rahasia karakter "A":
 \begin{figure}[H]
 	\centering
 	(00001000 00101011 11011100)\\
