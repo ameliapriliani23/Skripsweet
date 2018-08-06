@@ -252,16 +252,16 @@
       \vspace{1.5cm}
       \MakeUppercase{\normalfont\bfseries Skripsi }\\
       \vspace{.5cm}
-      Disusun untuk melengkapi syarat-syarat guna memperoleh gelar\\
-      Sarjana Komputer\\
+      Disusun untuk memenuhi salah satu syarat \\
+	  memperoleh gelar Sarjana Komputer\\
       \vspace{1.0cm}
        \vfill
-       \includegraphics[width=0.4\textwidth]{gambar/logounj_bw.png}
+       \includegraphics[width=0.4\textwidth]{gambar/logo_unj.png}
        \vfill
        {\normalfont
         \bfseries Oleh:\\
-        \MakeUppercase{\normalfont\bfseries \@fullname}\\
-        \MakeUppercase{\normalfont\bfseries \@idnum}}\\
+        \normalfont\bfseries \@fullname\\
+        \normalfont\bfseries \@idnum}\\
        \vspace{1.5cm}
        {\normalfont 
          \MakeUppercase{\normalfont\bfseries Program Studi \@dept}\\
