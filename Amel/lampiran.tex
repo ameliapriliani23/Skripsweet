@@ -7,7 +7,7 @@
 		
 		%Cek Kondisi Lokasi
 		lokasi = get(handles.kolom_lokasi, 'String')
-		if isempty(lokasi) %cek kondisi axes
+		if isempty(lokasi) 
 		msgbox('Gambar belum dimasukkan','Peringatan','warn');
 		return;    
 		end		
@@ -22,7 +22,7 @@
 		%Menghitung Panjang Pesan
 		row_max = row;
 		column_max = column;
-		hiddentext_length = length(hiddentext) %masih dalam hitungan desimal
+		hiddentext_length = length(hiddentext) 
 		if hiddentext_length < char_max 
 		hiddentext_biner = strcat(reshape(dec2bin(double(hiddentext),8).',1,[]), '00000000')
 		hiddentext_save = hiddentext_biner;
@@ -38,12 +38,12 @@
 		for i = 1:row_max-1
 		for j = 1:column_max    
 		if hiddentext_length ~= 0
-		image_biner_red = dec2bin(image_red(i,j),8); %11100100 contoh biner
-		image_biner_red(1,8) = hiddentext_biner(1,1); %bit terakhir diganti dengan bit  pesan
+		image_biner_red = dec2bin(image_red(i,j),8);
+		image_biner_red(1,8) = hiddentext_biner(1,1);
 		image_red(i,j) = bin2dec(image_biner_red); 
 		
-		hiddentext_biner(1:1) = [];  %menghapus 1 bit pertama pesan
-		hiddentext_length = length(hiddentext_biner); %menghitung panjang bit pesan            
+		hiddentext_biner(1:1) = [];  
+		hiddentext_length = length(hiddentext_biner);            
 		end
 		
 		if hiddentext_length ~= 0
@@ -85,9 +85,9 @@
 		for j = 1:column_max
 		biner_length = length(hiddentext);
 		if biner_length < hiddentext_length && var_null<=8
-		image_biner_red = dec2bin(image_red(i,j),8); %11100101 binernya 
-		hiddentext_red = image_biner_red(1,8); %diambil '1' dari bit yang terakhir
-		hiddentext = strcat(hiddentext, hiddentext_red); %digabungin sama si hiddentext yg awalnya kosong
+		image_biner_red = dec2bin(image_red(i,j),8); 
+		hiddentext_red = image_biner_red(1,8);
+		hiddentext = strcat(hiddentext, hiddentext_red);
 		if hiddentext_red == 0
 		var_null = var_null + 1;
 		else

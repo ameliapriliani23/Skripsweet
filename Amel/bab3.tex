@@ -1,7 +1,7 @@
 %!TEX root = ./template-skripsi.tex
 %-------------------------------------------------------------------------------
 %                            BAB III
-%               		PEMBAHASAN
+%               			PEMBAHASAN
 %-------------------------------------------------------------------------------
 
 \chapter{HASIL DAN PEMBAHASAN}
@@ -35,10 +35,7 @@ Dalam penelitian ini tahapan yang akan dilakukan adalah seperti gambar di bawah 
 	\end{figure}
 
 	Pada gambar di atas adalah \emph{flowchart} proses penyisipan pesan ke dalam \emph{file}
-	citra (\emph{Cover Image}). Dimulai dengan membaca \emph{file} citra RGB. Untuk \emph{file} bitmap RGB maka setiap \emph{pixel} (titik) pada gambar tersebut terdiri dari susunan
-	tiga warna \emph{Red, Green} dan \emph{Blue} yang masing-masing disusun oleh bilangan 8 bit
-	(1 \emph{byte}) dari 0 sampai 255 atau dengan format biner 00000000 sampai 11111111. Setelah
-	membaca \emph{pixel} dari \emph{file} citra langkah selanjutnya menentukan bit terkecil (LSB) pada \emph{Cover Image}.
+	citra (\emph{Cover Image}). Dimulai dengan membaca \emph{file} citra RGB. Untuk \emph{file} bitmap RGB maka setiap \emph{pixel} (titik) pada gambar tersebut terdiri dari susunan tiga warna \emph{Red, Green} dan \emph{Blue} yang masing-masing disusun oleh bilangan 8 bit (1 \emph{byte}) dari 0 sampai 255 atau dengan format biner 00000000 sampai 11111111. Setelah membaca \emph{pixel} dari \emph{file} citra langkah selanjutnya menentukan bit terkecil (LSB) pada \emph{Cover Image}.
 	
 	Selanjutnya adalah menyisipkan pesan (\emph{Hiddentext}) yang akan disembunyikan ke dalam \emph{Cover Image}. Pesan tersebut dikonversi terlebih dahulu menjadi nilai ASCII dan kemudian dikonversi kembali menjadi nilai Biner. Setelah itu terjadilah proses penyisipan (\emph{Encoding}). Selanjutnya biner yang telah disisipkan akan dikonversikan kembali ke dalam \emph{pixel}. Dan menyimpan citra yang telah disisipkan pesan ke dalam \emph{Cover Image} sehingga diperoleh atau	dapat ditampilkan sebuah gambar baru (\emph{Stego Image}).
 	
@@ -51,19 +48,16 @@ Dalam penelitian ini tahapan yang akan dilakukan adalah seperti gambar di bawah 
 		\label{flowchart_ekstraksi}
 	\end{figure}
 
-	Pada gambar di atas adalah \emph{flowchart} proses ekstraksi pesan dari \emph{Stego Image} yang menghasilkan \emph{Hiddentext} yang terdapat di dalamnya. Prosesnya dimulai dengan
-	membaca \emph{file} citra, dan mengubah \emph{pixel} ke dalam nilai biner.
-	Kemudian proses ekstraksi (\emph{Decoding}). Setelah diperoleh bit-bit yang tersembunyi pada \emph{Cover Image} maka proses
-	berikutnya adalah mengkonversi kembali pesan yang tersembunyi (\emph{Hiddentext}), sehingga pesan dapat ditampilkan kembali.
+	Pada gambar di atas adalah \emph{flowchart} proses ekstraksi pesan dari \emph{Stego Image} yang menghasilkan \emph{Hiddentext} yang terdapat di dalamnya. Prosesnya dimulai dengan membaca \emph{file} citra, dan mengubah \emph{pixel} ke dalam nilai biner. Kemudian proses ekstraksi (\emph{Decoding}). Setelah diperoleh bit-bit yang tersembunyi pada \emph{Cover Image} maka proses berikutnya adalah mengkonversi kembali pesan yang tersembunyi (\emph{Hiddentext}), sehingga pesan dapat ditampilkan kembali.
 
 	\subsection{Desain Antar Muka Program}
 	
-	Berikut adalah desain antar muka dari program steganografi yang dibangun dengan menggunakan Matlab.
+	Berikut adalah GUI dari program steganografi yang dibangun dengan menggunakan Matlab.
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1\textwidth]{gambar/mockup/1}
-		\caption{Desain \emph{Form} Steganografi}
+		\caption{GUI Steganografi}
 		\label{desain_form}
 	\end{figure}
 
@@ -72,32 +66,25 @@ Dalam penelitian ini tahapan yang akan dilakukan adalah seperti gambar di bawah 
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1\textwidth]{gambar/mockup/2}
-		\caption{Desain \emph{Form} - \emph{Cover Image}}
+		\caption{GUI - \emph{Cover Image}}
 		\label{desain_image}
 	\end{figure}
 
-	Setelah \emph{Cover Image} tampil maka pesan yang akan disisipkan atau \emph{Hiddentext} dapat dituliskan pada kolom pesan. Dan kemudian klik tombol \emph{Encoding} untuk melakukan proses \emph{Encoding}. Setelah proses \emph{Encoding}, maka akan didapatkan \emph{Stego Image} dan disimpan di dalam folder.
+	Setelah \emph{Cover Image} tampil maka pesan yang akan disisipkan atau \emph{Hiddentext} dapat dituliskan pada kolom pesan. Kemudian klik tombol \emph{Encoding} untuk melakukan proses \emph{Encoding}. Setelah proses \emph{Encoding}, maka akan didapatkan \emph{Stego Image} dan disimpan di dalam folder.
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1\textwidth]{gambar/mockup/3}
-		\caption{Desain \emph{Form} - Proses \emph{Encoding}}
+		\caption{GUI - Proses \emph{Encoding}}
 		\label{desain_encoding}
 	\end{figure}
 
 	Jika ingin melakukan proses \emph{Decoding}, maka buka \emph{Stego Image} yang telah disimpan. Kemudian klik tombol \emph{Decoding} dan pesan akan didapatkan.
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=1\textwidth]{gambar/mockup/4}
-		\caption{Desain \emph{Form} - Proses \emph{Decoding}}
-		\label{desain_decoding}
-	\end{figure}
 
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1\textwidth]{gambar/mockup/5}
-		\caption{Desain \emph{Form} - Pesan Hasil \emph{Decoding}}
+		\caption{GUI - Pesan Hasil \emph{Decoding}}
 		\label{desain_pesan}
 	\end{figure}
 
@@ -105,7 +92,7 @@ Dalam penelitian ini tahapan yang akan dilakukan adalah seperti gambar di bawah 
 Program diawali dengan pengambilan \emph{file} citra \emph{digital} yang akan digunakan, berikut adalah \emph{source code}-nya:
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=1\textwidth]{gambar/source_code/browse_image}
+		\includegraphics[width=1\textwidth]{gambar/sourcecode/browse_image}
 		\caption{\emph{Source Code} - \emph{Browse Image}}
 		\label{browse_image}
 	\end{figure}
@@ -113,7 +100,7 @@ Program diawali dengan pengambilan \emph{file} citra \emph{digital} yang akan di
 Selanjutnya adalah memasukkan pesan atau \emph{Hiddentext}. \emph{Hiddentext} yang akan dimasukkan tidak boleh melebihi batas maksimal karakter. Panjang karakter maksimal disesuaikan dengan besar \emph{pixel} pada \emph{file} citra. Panjang karakter maksimal dapat dihitung, berikut adalah \emph{source code}-nya:
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=1\textwidth]{gambar/source_code/karakter_maksimal}
+		\includegraphics[width=1\textwidth]{gambar/sourcecode/karakter_maksimal}
 		\caption{\emph{Source Code} - Menghitung Karakter Maksimal}
 		\label{karakter_max}
 	\end{figure}
@@ -121,7 +108,7 @@ Selanjutnya adalah memasukkan pesan atau \emph{Hiddentext}. \emph{Hiddentext} ya
 Sedangkan untuk menghitung panjang \emph{hiddentext} yang telah dimasukkan adalah sebagai berikut:
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=1\textwidth]{gambar/source_code/panjang_pesan}
+		\includegraphics[width=1\textwidth]{gambar/sourcecode/panjang_pesan}
 		\caption{\emph{Source Code} - Menghitung Panjang \emph{Hiddentext} yang Dimasukkan}
 		\label{panjang_pesan}
 	\end{figure}
@@ -130,7 +117,7 @@ Sedangkan untuk menghitung panjang \emph{hiddentext} yang telah dimasukkan adala
 Pada tugas akhir ini metode yang digunakan dalam steganografi adalah metode LSB. Proses \emph{Encoding} merupakan proses penyisipan pesan atau \emph{Hiddentext} ke dalam \emph{file} citra. Berikut adalah cuplikan \emph{source code} proses \emph{Encoding} dengan menggunakan metode LSB:
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=1\textwidth]{gambar/source_code/cuplikan_encoding}
+		\includegraphics[width=1\textwidth]{gambar/sourcecode/cuplikan_encoding}
 		\caption{\emph{Source Code} - Cuplikan \emph{Encoding}}
 		\label{cuplikan_encoding}
 	\end{figure}
@@ -139,7 +126,7 @@ Pada tugas akhir ini metode yang digunakan dalam steganografi adalah metode LSB.
 Proses \emph{Decoding} merupakan proses pengambilan kembali pesan atau \emph{Hiddentext} yang telah disisipkan ke dalam \emph{file} citra. Berikut merupakan cuplikan dari \emph{source code} proses \emph{Decoding}:
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=1\textwidth]{gambar/source_code/cuplikan_decoding}
+		\includegraphics[width=1\textwidth]{gambar/sourcecode/cuplikan_decoding}
 		\caption{\emph{Source Code} - Cuplikan \emph{Decoding}}
 		\label{cuplikan_decoding}
 	\end{figure}
@@ -159,6 +146,27 @@ Setelah dilakukan pengujian terhadap program Steganografi, maka didapatkan hasil
 	
 	Pada tabel tersebut terlihat bahwa \emph{file} citra dengan ukuran 8 bit tidak berhasil untuk disisipkan pesan karena tidak mengandung komponen RGB. Sedangkan untuk \emph{file} citra 24 dan 32 bit bisa digunakan sebagai \emph{Cover Image} untuk menyisipkan pesan karena mengandung komponen RGB didalamnya.
 	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.4\textwidth]{gambar/matlab/lena_gray}
+		\caption{\emph{File} Citra 8 Bit}
+		\label{lena_gray8}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.4\textwidth]{gambar/matlab/lena}
+		\caption{\emph{File} Citra 24 Bit}
+		\label{lena24}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.4\textwidth]{gambar/matlab/amelia}
+		\caption{\emph{File} Citra 32 Bit}
+		\label{amelia32}
+	\end{figure}
+
 	\subsection{Pengujian Berdasarkan \emph{Imperceptible}}
 	Pengujian ini menguji kualitas citra \emph{digital}, apakah citra \emph{digital} akan mengalami perubahan yang mencurigakan atau tidak secara visual. Pengujian ini dikatakan berhasil apabila kualitas dari \emph{Stego Image} yang dihasilkan tidak berbeda jika dibandingkan dengan berkas aslinya atau \emph{Cover Image}.
 
@@ -166,19 +174,22 @@ Setelah dilakukan pengujian terhadap program Steganografi, maka didapatkan hasil
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.4\textwidth]{gambar/matlab/lena}
-		\caption{\emph{Cover Image}}
-		\label{lena_asli}
+		\includegraphics[width=0.4\textwidth]{gambar/matlab/lena_kalimat}
+		\caption{Perbandingan \emph{File} Citra - lena.bmp}
+		\label{lena_stego}
 	\end{figure}
 
-	%gambar stego
+	%gambar cover
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.4\textwidth]{gambar/matlab/lena_kalimat}
-		\caption{\emph{Stego Image}}
-		\label{lena_pesan}
+		\includegraphics[width=0.4\textwidth]{gambar/matlab/amelia}
+		\includegraphics[width=0.4\textwidth]{gambar/matlab/amelia_kalimat}
+		\caption{Perbandingan \emph{File} Citra - amelia.bmp}
+		\label{amelia_stego}		
 	\end{figure}
 
-	Pada gambar 3.14 dan 3.15 menunjukkan jika dibandingkan secara visual maka tidak tampak perubahan yang terjadi dari \emph{Cover Image} ke \emph{Stego Image}. Tidak tampak perubahan warna ataupun bentuk dari \emph{Cover Image}.
+
+	Pada gambar 3.16 dan 3.17 menunjukkan jika dibandingkan secara visual maka tidak tampak perubahan yang terjadi dari \emph{Cover Image} ke \emph{Stego Image}. Tidak tampak perubahan warna ataupun bentuk dari \emph{Cover Image}.
 
 	\subsection{Pengujian Berdasarkan \emph{Fidelity}}
 	Pengujian ini berdasarkan proses penyembunyiaan pesan atau \emph{Encoding}. Pada proses penyembunyian pesan dapat berhasil apabila ukuran pesan yang akan disembunyikan sesuai dengan kapasitas \emph{file} citra. Apabila ukuran pesan melebihi kapasitas maksimal dari \emph{file} citra, maka program tidak akan melanjutkan proses \emph{Encoding}. Kapasitas pesan dipengaruhi oleh ukuran \emph{pixel} dari citra \emph{digital}. Semakin besar ukuran \emph{pixel} dari citra \emph{digital}, maka semakin besar pula kapasitas pesan yang bisa disembunyikan.
@@ -187,19 +198,19 @@ Setelah dilakukan pengujian terhadap program Steganografi, maka didapatkan hasil
 	\begin{table}[H]
 		\centering
 		\caption{Karakter Maksimal Pesan pada \emph{File} Citra}
-		\includegraphics[width=1.0\textwidth]{gambar/table_karaktermax}
-		\label{tabel_karaktermax}
+		\includegraphics[width=1.0\textwidth]{gambar/table_karaktermax3}
+		\label{tabel_karaktermax2}
 	\end{table}
 
 	\begin{table}[H]
 		\centering
 		\caption{Hasil Proses \emph{Encoding}}
-		\includegraphics[width=1.0\textwidth]{gambar/table_hasilencode}
-		\label{tabel_hasilencode2}
+		\includegraphics[width=1.0\textwidth]{gambar/table_hasilencode3}
+		\label{tabel_hasilencode3}
 	\end{table}
 
-	Pada tabel di atas terlihat data \emph{file} citra yang dimasukkan adalah 24 bit. Setiap  \emph{file} citra dimasukkan pesan atau \emph{Hiddentext} dengan beragam panjang karakter. Panjang dari karakter pesan berpengaruh terhadap kecepatan dalam proses \emph{Encoding}. Semakin panjang karakter yang dimasukkan, maka semakin lama juga waktu yg dibutuhkan. Untuk ketiga \emph{file} citra tersebut semuanya berhasil dalam proses \emph{Encoding}.
-	
+	Pada tabel di atas terlihat data \emph{file} citra yang dimasukkan adalah 24 bit dan 32 bit. Setiap  \emph{file} citra dimasukkan pesan atau \emph{Hiddentext} dengan beragam panjang karakter. Panjang dari karakter pesan berpengaruh terhadap kecepatan dalam proses \emph{Encoding}. Semakin panjang karakter yang dimasukkan, maka semakin lama juga waktu yg dibutuhkan. Untuk \emph{file} citra $lena_ gray$ tidak bisa dilakukan proses \emph{Encoding}, karena \emph{file} tersebut adalah \emph{file} 8 bit. Pada \emph{file} citra lena dan amelia, berhasil dilakukan proses \emph{Encoding}, kecuali ketika panjang karakter pesan melebihi kapasitas maksimal dari \emph{file} citra tersebut.
+
 	\subsection{Pengujian Berdasarkan \emph{Recovery}}
 	Pengujian ini berdasarkan proses ektraksi pesan atau \emph{Decoding}. Untuk membuktikan apakah program steganografi ini berhasil, maka harus dapat dibuktikan bahwa pesan di dalam \emph{Stego Image} dapat diambil kembali. Jika pengujian dilakukan dengan benar, maka \emph{Hiddentext} dapat ditampilkan sesuai dengan yang dimasukkan. 
 	
@@ -209,12 +220,37 @@ Setelah dilakukan pengujian terhadap program Steganografi, maka didapatkan hasil
 	\begin{table}[H]
 		\centering
 		\caption{Hasil Proses \emph{Decoding}}
-		\includegraphics[width=1.0\textwidth]{gambar/table_hasildecode2}
-		\label{tabel_hasildecode2}
+		\includegraphics[width=1.0\textwidth]{gambar/table_hasildecode3}
+		\label{tabel_hasildecode3}
 	\end{table}
 	
-	Pada proses \emph{Decoding}, besar \emph{pixel} dan ukuran pada \emph{Stego Image}, tidak mengalami perubahan. Hal ini tidak akan memberikan kecurigaan terhadap \emph{file} citra. Waktu yang dibutuhkan dalam proses \emph{Decoding} juga berbanding lurus dengan panjang karakter pesan. Semakin banyak karakter pesan atau \emph{Hiddentext} yang dimasukkan, maka semakin lama waktu yang dibutuhkan. Pada proses \emph{Decoding} terhadap ketiga \emph{file} citra hasilnya adalah berhasil. Karena pesan yang ada pada \emph{file} citra tersebut bisa ditampilkan kembali.
+	Pada proses \emph{Decoding}, besar \emph{pixel} dan ukuran pada \emph{Stego Image}, tidak mengalami perubahan. Hal ini tidak akan memberikan kecurigaan terhadap \emph{file} citra. Waktu yang dibutuhkan dalam proses \emph{Decoding} juga berbanding lurus dengan panjang karakter pesan. Semakin banyak karakter pesan atau \emph{Hiddentext} yang dimasukkan, maka semakin lama waktu yang dibutuhkan. Pada proses \emph{Decoding} terhadap kedua \emph{file} citra hasilnya adalah berhasil. Karena pesan yang ada pada \emph{file} citra tersebut bisa ditampilkan kembali.
 	
+	Pada pengujian ini juga dilakukan teknik \emph{cropping} pada beberapa \emph{Stego Image}. Setelah dilakukan \emph{cropping}, \emph{Stego Image} tersebut tidak berhasil untuk menampilkan pesan asli yang ada di dalamnya, hanya karakter-karakter aneh yang ditampilkan. 
+	
+	\begin{table}[H]
+		\centering
+		\caption{Hasil Proses \emph{Cropping} }
+		\includegraphics[width=1.0\textwidth]{gambar/table_cropping}
+		\label{tabel_cropping}
+	\end{table}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{gambar/matlab/lena_crop}
+		\caption{\emph{File} Citra lena.bmp Hasil \emph{Cropping}}
+		\label{lena_crop}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{gambar/matlab/amelia_crop}
+		\caption{\emph{File} Citra amelia.bmp Hasil \emph{Cropping}}
+		\label{amelia_crop}
+	\end{figure}
+
+	Teknik \emph{cropping} dapat menyebabkan \emph{pixel-pixel} pada \emph{file} citra menjadi hilang. Sehingga pesan yang sudah disisipkan di dalam \emph{file} citra tersebut tidak dapat ditampilkan kembali.
+		 
 	\subsection{Kesimpulan Pengujian}
 	Dari pengujian di atas dapat disimpulkan bahwa program steganografi yang dibuat ini menghasilkan hasil yang cukup baik untuk setiap penyembunyian pesan ke dalam \emph{file} citra. Pemilihan \emph{Cover Image} yang akan digunakan dan panjang karakter pesan yang akan dimasukkan sangat berpengaruh, karena semakin besar ukuran \emph{file} citra yang digunakan dan semakin sedikit karakter yang disisipkan pada \emph{file} citra maka semakin sedikit perubahan yang terjadi setelah proses penyisipan pada \emph{file} citra atau kualitas sebelum penyisipan dan setelah penyisipan tidak berpengaruh banyak pada perubahan kualitas citra sebelumnya.
 	
