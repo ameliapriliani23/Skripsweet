@@ -10,13 +10,13 @@
 Berdasarkan hasil implementasi dan pengujian program ini, didapat kesimpulan sebagai berikut:
 
 \begin{enumerate}
-	\item Format \emph{file} citra yang hanya bisa digunakan adalah format *.bmp 24 bit dan 32 bit.
+	\item Format \emph{file} citra yang bisa digunakan adalah format *.bmp 24 bit dan 32 bit karena mengandung RGB (\emph{Red, Green, Blue}), sedangkan pada \emph{file} citra 8 bit tidak dapat diproses karena tidak mengandung RGB.
 	
-	\item Pesan dalam format teks berhasil untuk disisipkan ke dalam \emph{file} citra dengan metode LSB menggunakan \emph{Software} MATLAB R2016b.
+	\item Pesan dalam format teks berhasil untuk disisipkan ke dalam \emph{file} citra dengan syarat tidak melebihi kapasitas maksimal dari \emph{file} citra tersebut.
 	
 	\item \emph{File} citra yang digunakan baik sebelum dan sesudah diproses tidak berubah. Perubahan yang terjadi tidak dapat dilihat secara visual.
 	
-	\item Pesan dalam \emph{Stego Image} dapat ditampilkan kembali dan sesuai dengan pesan awal.
+	\item Pesan dalam \emph{Stego Image} dapat ditampilkan kembali dan sesuai dengan pesan awal. Kecuali ketika \emph{Stego Image} di-\emph{crop} maka pesan asli yang terdapat di \emph{file} citra tersebut tidak dapat ditampilkan kembali.
 
 \end{enumerate}
 

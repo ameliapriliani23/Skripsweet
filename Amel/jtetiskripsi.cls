@@ -250,13 +250,13 @@
       \begin{singlespace}
       \fontsize{14pt}{16pt}\selectfont\MakeUppercase{\normalfont\bfseries\@titleind}\par\nobreak
       \vspace{1.5cm}
-      \MakeUppercase{\normalfont\bfseries Skripsi }\\
-      \vspace{.5cm}
+	  \normalfont\bfseries Skripsi \\
+      \vspace{1.0cm}
       Disusun untuk memenuhi salah satu syarat \\
 	  memperoleh gelar Sarjana Komputer\\
       \vspace{1.0cm}
        \vfill
-       \includegraphics[width=0.4\textwidth]{gambar/logo_unj.png}
+       \includegraphics{gambar/logo_unj.png}
        \vfill
        {\normalfont
         \bfseries Oleh:\\
@@ -354,7 +354,6 @@
   \vspace{1.0cm}
     }
   \begin{singlespacing}%
-  \vskip 20\p@
   \addcontentsline{toc}{chapter}{\abstractname}
 }
 \def\endabstractind{\par\vfil\null\end{singlespacing}}
@@ -370,7 +369,6 @@
   \vspace{1.0cm}
     }
   \begin{singlespacing}%
-  \vskip 20\p@
   \addcontentsline{toc}{chapter}{\abstractname}
 }
 \def\endabstracteng{\par\vfil\null\end{singlespacing}%

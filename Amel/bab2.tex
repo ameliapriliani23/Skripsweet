@@ -20,8 +20,8 @@
 		\caption{Diagram Penyisipan dan Ekstraksi pada Pesan}
 		\label{diagram_steganografi}
 	\end{figure} 
-	
-	Istilah di dalam steganografi:
+
+	Istilah di dalam Gambar 2.1:
 	\begin{enumerate}
 		\item \emph{Covertext} merupakan media atau tempat pesan yang digunakan untuk menyembunyikan \emph{hiddentext}. \emph{Covertext} bisa berupa teks, gambar, audio, video, dll.
 		\item \emph{Hiddentext}	atau biasa disebut \emph{embedded message} merupakan pesan atau informasi yang ingin disembunyikan. Contohnya bisa berupa teks, gambar, audio, video, dll.
@@ -29,6 +29,9 @@
 		\item \emph{Encoding} yaitu penyisipan pesan ke dalam media \emph{covertext}.
 		\item \emph{Decoding} yaitu ekstraksi pesan dari \emph{stegotext}.
 	\end{enumerate}
+
+	Pada Gambar 2.1 dijelaskan gambaran secara umum mengenai steganografi. Untuk menyisipkan \emph{hiddentext} ke dalam \emph{covertext} dilakukan proses \emph{Encoding}. Jika ingin menampilkan \emph{hiddentext} kembali, maka dilakukan proses \emph{Decoding}. Untuk \emph{key} pada steganografi bersifat opsional.
+	
 	
 	Menurut \textbf{Munir}, ada kriteria yang harus diperhatikan dalam penyembunyian pesan, yaitu meliputi \emph{Imperceptible}, \emph{Fidelity}, \emph{Recovery} dan \emph{Capacity}.
 	\begin{enumerate}
@@ -49,7 +52,7 @@
 			\begin{enumerate}
 				\item Steganografi dengan media kepala budak
 				
-				Ditulis oleh \textbf{Herodatus} (485-525 BC), sejarawan Yunani pada tahun 440 BC di dalam buku: \emph{Histories of Herodatus}). Kisah perang antara kerajaan Persia dan rakyat Yunani. \textbf{Herodatus} menceritakan cara \textbf{Histaiaeus} mengirim pesan kepada \textbf{Aristagoras of Miletus} untuk melawan Persia. Caranya adalah dengan dipilih beberapa budak. Kemudian kepala budak tersebut digunduli dan ditulis pesan dengan cara ditato. Setelah pesan dituliskan, budak harus menunggu hingga rambutnya tumbuh kembali. Setelah rambut pada kepala budak tersebut tumbuh, budak dikirim ke tempat penerima. Di sana kepala budak digunduli agar pesan dapat dibaca.
+				Ditulis oleh \textbf{Herodatus} (485-525 BC), sejarawan Yunani pada tahun 440 BC di dalam buku: \emph{Histories of Herodatus}). Kisah perang antara kerajaan Persia dan rakyat Yunani. \textbf{Herodatus} menceritakan cara \textbf{Histaiaeus} mengirim pesan kepada \textbf{Aristagoras of Miletus} untuk melawan Persia. Caranya adalah seperti pada Gambar 2.2. Pertama dipilih beberapa budak. Kemudian kepala budak tersebut digunduli dan ditulis pesan dengan cara ditato. Setelah pesan dituliskan, budak harus menunggu hingga rambutnya tumbuh kembali. Setelah rambut pada kepala budak tersebut tumbuh, budak dikirim ke tempat penerima. Di sana kepala budak digunduli agar pesan dapat dibaca.
 					\begin{figure}[H]
 						\centering
 						\includegraphics[width=0.8\textwidth]{gambar/steganografi_kepalabudak}
@@ -59,7 +62,7 @@
 				
 				\item Penggunaan tablet \emph{wax}
 				
-				Orang-orang Yunani kuno menulis pesan rahasia di atas kayu yang kemudian ditutup dengan lilin (\emph{wax}). Di dalam bukunya, \textbf{Heradatus} menceritakan \textbf{Demaratus} mengirim peringatan tentang serangan yang akan datang ke Yunani dengan menulis langsung pada tablet kayu yang kemudian dilapisi lilin dari lebah.
+				Orang-orang Yunani kuno menulis pesan rahasia di atas kayu yang kemudian ditutup dengan lilin (\emph{wax}) seperti pada Gambar 2.3. Di dalam bukunya, \textbf{Heradatus} menceritakan \textbf{Demaratus} mengirim peringatan tentang serangan yang akan datang ke Yunani dengan menulis langsung pada tablet kayu yang kemudian dilapisi lilin dari lebah.
 					\begin{figure}[H]
 						\centering
 						\includegraphics[width=1\textwidth]{gambar/tablet_wax}
@@ -88,7 +91,7 @@
 			\label{steganografi_perangdunia}
 		\end{figure}
 	
-		Selama terjadinya Perang Dunia ke-2, tinta yang tidak tampak (\emph{invisible ink}) telah digunakan untuk menulis informasi pada lembaran kertas sehingga saat kertas tersebut jatuh di tangan pihak lain hanya akan tampak seperti lembaran kertas kosong biasa. Cairan seperti air kencing (\emph{urine}), susu, vinegar, dan jus buah digunakan sebagai media penulisan sebab bila salah satu elemen tersebut dipanaskan, tulisan akan menggelap dan tampak melalui mata manusia \cite{munir}.
+		Pada Gambar 2.4 menjelaskan selama terjadinya Perang Dunia ke-2, tinta yang tidak tampak (\emph{invisible ink}) telah digunakan untuk menulis informasi pada lembaran kertas sehingga saat kertas tersebut jatuh di tangan pihak lain hanya akan tampak seperti lembaran kertas kosong biasa. Cairan seperti air kencing (\emph{urine}), susu, vinegar, dan jus buah digunakan sebagai media penulisan sebab bila salah satu elemen tersebut dipanaskan, tulisan akan menggelap dan tampak melalui mata manusia \cite{munir}.
 		
 		\item Steganografi \emph{Digital}
 		
@@ -127,6 +130,7 @@
 		\label{spreadlsb}
 	\end{figure}
 	
+	Pada Gambar 2.5 menjelaskan perbedaan proses pada metode LSB dan \emph{Spread Spectrum}. Pada proses LSB setelah gambar dan pesan teks sudah dikonversi ke dalam bentuk biner, maka pesan teks dapat langsung disisipkan ke dalam gambar. Sedangkan pada metode \emph{Spread Spectrum} perlu melalui proses XOR antara pesan dan kata kunci, sebelum menyisipkan pesan ke dalam gambar.
 
 \section{Perbedaan Steganografi dan Kriptografi}
 Steganografi dan kriptografi mempunyai prinsip kerja yang berbeda, meskipun keduanya mempunyai hubungan yang dekat dalam dunia keamanan data. Pada kriptografi menghasilkan sebuah \emph{chipertext} dimana dengan itu seolah-olah dengan sengaja menunjukkan kepada orang lain bahwa ada sesuatu di dalamnya, namun tidak dapat diketahui maknanya. Namun dengan bentuk \emph{chiper}-nya, justru akan membuat data tersebut terancam oleh usaha-usaha yang dilakukan oleh orang lain untuk dapat membongkarnya dengan tujuan dan atau alasan apapun.
@@ -137,7 +141,7 @@ Steganografi dan kriptografi mempunyai prinsip kerja yang berbeda, meskipun kedu
 	\label{perbedaan_kripsteg}
 \end{figure}
 
-Steganografi dan kriptografi merupakan seni dan teknik yang dapat digunakan untuk melakukan pengamanan data \emph{digital}. Namun keduanya tidaklah sama. Pada kriptografi, suatu data \emph{digital} diamankan dengan cara mengenkripsi data tersebut dan menghasilkan sebuah data yang berupa sandi, secara visual data tersebut masih dapat terlihat atau diketahui, hanya saja data tersebut menjadi tidak dapat dimengerti. Berbeda dengan steganografi yang tujuannya adalah menyembunyikan data ke dalam sebuah media yang lain, sehingga data tersebut tidak terlihat \cite{setiana}.
+Steganografi dan kriptografi merupakan seni dan teknik yang dapat digunakan untuk melakukan pengamanan data \emph{digital}. Namun keduanya tidaklah sama. Pada kriptografi, suatu data \emph{digital} diamankan dengan cara mengenkripsi data tersebut dan menghasilkan sebuah data yang berupa sandi, secara visual data tersebut masih dapat terlihat atau diketahui, hanya saja data tersebut menjadi tidak dapat dimengerti. Berbeda dengan steganografi yang tujuannya adalah menyembunyikan data ke dalam sebuah media yang lain, sehingga data tersebut tidak terlihat seperti pada Gambar 2.6 \cite{setiana}.
 
 \section{LSB (\emph{Least Significant Bit})}
 Penyembunyian data dilakukan dengan mengganti bit-bit data di dalam segmen citra dengan bit-bit rahasia. Pada susunan bit di dalam sebuah \emph{byte} (1 \emph{byte}= 8 bit), ada bit yang paling berarti (\emph{most significant bit} atau MSB) dan bit yang paling kurang berarti (\emph{least significant bit} atau LSB). LSB merupakan salah satu metode yang paling sederhanaa dalam steganografi. Bit yang cocok untuk diganti adalah bit LSB, sebab perubahan tersebut hanya mengubah nilai \emph{byte} satu lebih tinggi atau satu lebih rendah dari nilai sebelumnya \cite{munir}.
@@ -186,8 +190,8 @@ Kata "ADA" mempunyai biner A = 01000001, D = 01000100, maka bit-bit yang dihasil
 
 Bit-bit yang nilainya berganti ada 13 dalam 24 \emph{Byte} yang digunakan. Secara rata-rata, LSB hanya menggunakan setengah dari bit dalam gambar yang perlu dimodifikasi untuk menyembunyikan pesan rahasia. Perubahan ini tidak dapat dirasakan oleh mata manusia, dan pesan berhasil disembunyikan \cite{elgabar2}.
 
-\section{ASCII}
-ASCII adalah singkatan dari \emph{American Standard Code for Information Interchange}. Komputer hanya dapat memahami angka, jadi kode ASCII adalah representasi numerik dari karakter seperti 'a' atau '@' atau karakter lainnya. Kode ASCII sebenarnya memiliki komposisi bilangan biner sebanyak 7 bit. Namun, ASCII disimpan sebagai sandi 8 bit dengan menambakan satu angka 0 sebagai bit significant paling tinggi, dan disebut dengan \emph{Extended ASCII}. Dimulai dari 00000000 hingga 11111111. Total kombinasi yang dihasilkan ASCII sebanyak 256, dimulai dari kode 0 hingga 255 dalam sistem bilangan desimal. \cite{ascii}
+\section{ASCII (\emph{American Standard Code for Information Interchange})}
+Komputer hanya dapat memahami angka, jadi kode ASCII adalah representasi numerik dari karakter seperti 'a' atau '@' atau karakter lainnya. Kode ASCII sebenarnya memiliki komposisi bilangan biner sebanyak 7 bit. Namun, ASCII disimpan sebagai sandi 8 bit dengan menambakan satu angka 0 sebagai bit \emph{significant} paling tinggi, dan disebut dengan \emph{Extended ASCII}. Dimulai dari 00000000 hingga 11111111. Total kombinasi yang dihasilkan ASCII sebanyak 256, dimulai dari kode 0 hingga 255 dalam sistem bilangan desimal seperti pada Tabel 2.1. \cite{ascii}
 \begin{table}[H]
 	\centering
 	\caption{Tabel ASCII \cite{tableascii}}
@@ -236,7 +240,7 @@ ASCII adalah singkatan dari \emph{American Standard Code for Information Interch
 		\label{tabel_perbedaan}
 	\end{table}
 
-	Pada tabel di atas terlihat bahwa pada komponen kompresi \emph{lossless} JPEG tidak memilikinya, ini dikarenakan JPEG memiliki sifat \emph{lossy}, yang berarti beberapa kualitas hilang ketika gambar dikompresi. Pada komponen RGB menurut jurnal "\emph{A Survey on Digital Image Steganography Techniques}" BMP memiliki sifat \emph{limited}. Untuk format GIF dan PNG keduanya memiliki komponen transparansi. Selain memiliki komponen transparansi, pada format GIF juga memiliki komponen animasi. Semua format mendukung \emph{color bits} 24 bit. BMP mendukung juga sampai 32 bit, sedangkan pada TIFF dan PNG mendukung hingga 48 bit.
+	Pada Tabel 2.2 di atas terlihat bahwa pada komponen kompresi \emph{lossless} JPEG tidak memilikinya, ini dikarenakan JPEG memiliki sifat \emph{lossy}, yang berarti beberapa kualitas hilang ketika gambar dikompresi. Pada komponen RGB menurut jurnal "\emph{A Survey on Digital Image Steganography Techniques}" BMP memiliki sifat \emph{limited}. Untuk format GIF dan PNG keduanya memiliki komponen transparansi. Selain memiliki komponen transparansi, pada format GIF juga memiliki komponen animasi. Semua format mendukung \emph{color bits} 24 bit. BMP mendukung juga sampai 32 bit, sedangkan pada TIFF dan PNG mendukung hingga 48 bit.
 
 % Baris ini digunakan untuk membantu dalam melakukan sitasi
 % Karena diapit dengan comment, maka baris ini akan diabaikan
